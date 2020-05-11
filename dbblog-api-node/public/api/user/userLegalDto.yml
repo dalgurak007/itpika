@@ -1,0 +1,28 @@
+properties:
+  phoneNumber:
+    type: string
+    description: 手机号(账号)
+  password:
+    type: string
+    description: 密码
+  nickName:
+    type: string
+    description: 昵称
+  realName:
+    type: string
+    description: 真实姓名
+  idNumber:
+    type: string
+    description: 身份证号码
+  SMSCode:
+    type: string
+    description: 验证码
+  provider:
+    type: string
+    description: 企业名称
+  setupCode:
+    type: string
+    description: 统一社会信用代码
+  legalType:
+    type: string
+    description: 法人级别

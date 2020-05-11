@@ -84,12 +84,12 @@ export default {
       }
       params = merge(params, this.menuBookParams)
       this.$http({
-        url: this.$http.adornUrl('/books'),
+        url: this.$http.adornUrl('/book'),
         params: this.$http.adornParams(params),
         method: 'get'
       }).then(({data}) => {
         if (data && data.code === 200) {
-          this.bookList = data.page.list
+          this.bookList = data.data.list
           this.readingBookList = this.bookList.filter(book => {
             if (book.reading) {
               return book
@@ -106,17 +106,17 @@ export default {
       }
       params = merge(params, this.menuBookNoteParams)
       this.$http({
-        url: this.$http.adornUrl('/bookNotes'),
+        url: this.$http.adornUrl('/bookNote'),
         params: this.$http.adornParams(params),
         method: 'get'
       }).then(({data}) => {
         if (data && data.code === 200) {
-          if (data.page.totalPage <= data.page.currPage) {
+          if (data.data.totalPage <= data.data.currPage) {
             this.noMoreData = true
           } else {
             this.noMoreData = false
           }
-          this.bookNoteList = data.page.list
+          this.bookNoteList = data.data.list
         }
       })
     },
@@ -161,17 +161,17 @@ export default {
       }
       params = merge(params, this.menuBookNoteParams)
       this.$http({
-        url: this.$http.adornUrl('/bookNotes'),
+        url: this.$http.adornUrl('/bookNote'),
         params: this.$http.adornParams(params),
         method: 'get'
       }).then(({data}) => {
         if (data && data.code === 200) {
-          if (data.page.totalPage <= data.page.currPage) {
+          if (data.data.totalPage <= data.data.currPage) {
             this.noMoreData = true
           } else {
             this.noMoreData = false
           }
-          this.bookNoteList = this.bookNoteList.concat(data.page.list)
+          this.bookNoteList = this.bookNoteList.concat(data.data.list)
         }
       }).then(response => {
         this.$refs.browseMore.stopLoading()

@@ -1,0 +1,10 @@
+properties:
+  userToken:
+    type: string
+    description: 用户token
+  pageSize:
+    type: integer
+    description: 页大小
+  pageIndex:
+    type: integer
+    description: 页码

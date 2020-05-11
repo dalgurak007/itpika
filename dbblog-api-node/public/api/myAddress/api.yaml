@@ -1,0 +1,145 @@
+swagger: "2.0"
+info:
+  description: "我的收货地址接口"
+  version: "1.0.0"
+  title: "收货地址接口"
+basePath: "/wx"
+# host: "127.0.0.1:20001"
+# host: "114.116.21.95:20001"
+# basePath: "/v2"
+# externalDocs:
+#   description: "Find out more about Swagger"
+#   url: "http://swagger.io"
+tags:
+- name: "myAddress"
+  description: "我的收货地址接口"
+  externalDocs:
+    description: "我的收货地址接口"
+schemes:
+- "http"
+- "https"
+paths:
+  /myAddress/save:
+    post:
+      tags:
+      - "myAddress"
+      summary: 添加收货地址
+      description: 添加收货地址
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        schema:
+          $ref: ./myAddressDto.yml
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+  /myAddress/update:
+    post:
+      tags:
+      - "myAddress"
+      summary: 修改收货地址
+      description: 修改收货地址
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        properties:
+          param:
+            type: object
+            description: 需修改的参数(修改id必传)
+          userToken:
+            type: string
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+  /myAddress/delete:
+    post:
+      tags:
+      - "myAddress"
+      summary: 删除收货地址
+      description: 删除收货地址
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        properties:
+          id:
+            type: string
+            description: 需删除的地址id
+          userToken:
+            type: string
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+  /myAddress/findAll:
+    post:
+      tags:
+      - "myAddress"
+      summary: 查询收货地址列表
+      description: 查询收货地址列表
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        properties:
+          userToken:
+            type: string
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+  /myAddress/findOne:
+    post:
+      tags:
+      - "myAddress"
+      summary: 查询收货地址
+      description: 查询收货地址
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        properties:
+          id:
+            type: string
+          userToken:
+            type: string
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+
+

@@ -15,3 +15,5 @@ selenium-debug.log
 *.ntvs*
 *.njsproj
 *.sln
+
+dbblog-api-node/node_modules/*

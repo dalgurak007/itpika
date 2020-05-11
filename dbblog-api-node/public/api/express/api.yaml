@@ -1,0 +1,101 @@
+swagger: "2.0"
+info:
+  description: "运单接口"
+  version: "1.0.0"
+  title: "运单接口"
+basePath: "/wx"
+# host: "127.0.0.1:20001"
+# host: "114.116.21.95:20001"
+# basePath: "/v2"
+# externalDocs:
+#   description: "Find out more about Swagger"
+#   url: "http://swagger.io"
+tags:
+- name: "ems"
+  description: "运单接口"
+  externalDocs:
+    description: "运单接口"
+- name: "mail"
+  description: "邮寄接口"
+schemes:
+- "http"
+- "https"
+paths:
+  /express/ems/expressStatus:
+    post:
+      tags:
+      - "ems"
+      summary: 运单状态查询接口
+      description: 运单状态查询接口
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        properties:
+          mailNo:
+            type: string
+          userToken:
+            type: string
+        description: mailNo：运单编号
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+  /express/ems/getMailNo:
+    post:
+      tags:
+      - "ems"
+      summary: 获取运单号
+      description: 获取运单号
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        properties:
+          bizcode:
+            type: string
+          count:
+            type: integer
+          userToken:
+            type: string
+        description: count：获取数量，bizcode：运单类型代码-非邮业务：05，标准快递：06，经济快递：07
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+  /express/ems/mail/pick-up:
+    post:
+      tags:
+      - "mail"
+      summary: 上门取件接口
+      description: 上门取件接口
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        properties:
+          userToken:
+            type: string
+        description: count：获取数量，bizcode：运单类型代码-非邮业务：05，标准快递：06，经济快递：07
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"

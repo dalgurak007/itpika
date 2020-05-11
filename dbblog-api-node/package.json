@@ -1,0 +1,37 @@
+{
+  "name": "wechatapplet",
+  "version": "1.0.0",
+  "description": "node api server",
+  "main": "index.js",
+  "bin": "bin/product.js",
+  "pkg": {
+    "scripts": "src/**/*.js",
+    "assets": "build/**/*.json"
+  },
+  "scripts": {
+    "build": "babel src -d build --source-maps",
+    "tar-pkg": "tar -zcf ../policewechatapplet.tar.gz --exclude=node_modules --exclude=build ./",
+    "uptar": "scp ../policewechatapplet.tar.gz dcjt@114.116.21.95:/var/www/server",
+    "up-linux": "npm run tar-pkg; npm run uptar",
+    "pkg-all": "tar -zcf ../policewechatapplet.tar.gz ./ && scp ../policewechatapplet.tar.gz dcjt@114.116.21.95:/var/www/server",
+    "prd-api": "node bin/index.js 20001 product",
+    "pkg-linux": "pkg . -t node10-linux-x64 --output ./build/nodeApp.linux/app",
+    "pkg-mac": "pkg . -t node10-mac-x64 --output ./build/nodeApp.mac/app"
+  },
+  "author": "dalgurak",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "colors": "^1.4.0",
+    "ioredis": "^4.16.3",
+    "koa": "^2.11.0",
+    "koa-body": "^4.1.1",
+    "koa-bodyparser": "^4.3.0",
+    "mysql2": "^2.1.0",
+    "node-yaml": "^4.0.1",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.8.0"
+  }
+}

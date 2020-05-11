@@ -15,7 +15,7 @@
     </router-link>
     <ul id="nav">
       <li>
-        <form id="search-form" action="/articles/search">
+        <form id="search-form" action="/article/search">
       <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;">
         <input
         type="text" id="search-query-nav" class="search-query st-default-search-input aa-input" name="keywords" v-model="keywords" @keyup.enter="submit"
@@ -31,8 +31,8 @@
         </form>
       </li>
 
-      <li><a href="/articles" class="nav-link contribute">文章</a></li>
-      <li><a href="/books" class="nav-link contribute">阅读</a></li>
+      <li><a href="" class="nav-link contribute">文章</a></li>
+      <li><a href="/book" class="nav-link contribute">阅读</a></li>
       <li><a href="/timeline" class="nav-link contribute">时光轴</a></li>
       <li><a href="/article/1" class="nav-link contribute">关于</a></li>
     </ul>

@@ -1,0 +1,43 @@
+#! /usr/bin/env bash
+env=$1
+if [ -z ${env} ];then
+  env="test"
+else
+  envs=("dev" "product" "test")
+  tmp=0
+  for v in ${envs[@]}
+  do
+    if [ ${v} = ${env} ];then
+      tmp=1
+    fi
+  done
+  if [ ${tmp} -eq 0 ];then
+    env="test"
+  fi
+fi
+
+# PORT=20018
+# if [ ${env} = "product" ];then
+#   PORT=20019
+# fi
+
+DIR=$(cd $(dirname $0); cd ..; pwd)
+cd ${DIR}
+START_TIME=`date +%Y%m%d_%H%M%S`
+mkdir -p /var/www/log/nodejs/wechatapplet/${env}
+# ps aux|grep "\[node-app:wechatapplet:api"|grep -v "grep"|awk '{print $2}'|xargs -I {} kill -9 {}
+
+PORTS=("20018")
+
+# PORT=20018
+if [ ${env} = "product" ];then
+  PORTS=("20005" "20006" "20007")
+fi
+
+for v in ${PORTS[@]}
+do
+  rm -rf /var/www/log/nodejs/wechatapplet/${env}/${v}; mkdir -p /var/www/log/nodejs/wechatapplet/${env}/${v}
+  ${DIR}/app api ${v} ${env} [node-app:wechatapplet:api] ${START_TIME} >> /var/www/log/nodejs/wechatapplet/${env}/${v}/today.log &
+done
+
+echo "finished: start node-app:wechatapplet:api!"

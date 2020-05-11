@@ -1,0 +1,83 @@
+swagger: "2.0"
+info:
+  description: "个人中心接口"
+  version: "1.0.0"
+  title: "个人中心接口"
+# host: "127.0.0.1:20001"
+# host: "114.116.21.95:20001"
+
+basePath: "/wx"
+# externalDocs:
+#   description: "Find out more about Swagger"
+#   url: "http://swagger.io"
+tags:
+- name: "message"
+  description: "消息接口"
+schemes:
+- "http"
+- "https"
+paths:
+  /user/homepage/message/page:
+    post:
+      tags:
+      - "message"
+      summary: 消息列表
+      description: 消息列表
+      produces:
+      - "application/json"
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        schema:
+          $ref: ../../dto/pageDto.yml
+      responses:
+        200:
+          schema:
+            $ref: ./msgDto.yml
+          description: "success"
+  /user/homepage/message/read:
+    get:
+      tags:
+      - "message"
+      summary: 消息已读
+      description: 消息已读
+      produces:
+      - "application/json"
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: msgId
+        in: query
+        type: string
+      responses:
+        200:
+          description: "success"
+  /user/homepage/message/del:
+    delete:
+      tags:
+      - "message"
+      summary: 删除消息
+      description: 删除消息
+      produces:
+      - "application/json"
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: msgId
+        in: query
+        type: string
+      responses:
+        200:
+          description: "success"

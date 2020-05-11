@@ -1,0 +1,21 @@
+#! /usr/bin/env bash
+env=$1
+if [ -z ${env} ];then
+  env="test"
+else
+  envs=("dev" "product" "test")
+  tmp=0
+  for v in ${envs[@]}
+  do
+    if [ ${v} = ${env} ];then
+      tmp=1
+    fi
+  done
+  if [ ${tmp} -eq 0 ];then
+    env="test"
+  fi
+fi
+
+ps aux|grep "${env} \[node-app:wechatapplet:interfaceListening"|grep -v "grep"|awk '{print $2}'|xargs -I {} kill -9 {}
+# ps aux|grep "${env} \[node-app:wechatapplet:serviceListening"|grep -v "grep"|awk '{print $2}'|xargs -I {} kill -9 {}
+echo "finished: stop all node"

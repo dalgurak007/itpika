@@ -1,0 +1,10 @@
+properties:
+  code:
+    type: number
+    description: 状态码 200：成功，401：失败
+  message:
+    type: string
+    description: 状态信息
+  data:
+    type: object
+    description: 返回数据

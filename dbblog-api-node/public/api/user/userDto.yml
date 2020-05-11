@@ -1,0 +1,19 @@
+properties:
+  nickName:
+    type: string
+    description: 昵称
+  password:
+    type: string
+    description: 密码
+  phoneNumber:
+    type: string
+    description: 电话
+  realName:
+    type: string
+    description: 真实姓名
+  idCardNum:
+    type: string
+    description: 身份证号码
+  SMSCode:
+    type: string
+    description: 验证码

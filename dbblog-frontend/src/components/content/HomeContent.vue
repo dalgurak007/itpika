@@ -3,15 +3,15 @@
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17" :xl="17">
         <div class="layout-left">
-          <section-title :mainTitle="'文章'" :subTitle="'Articles'" :tipText="'View More'" :tipHref="'/articles'">
+          <section-title :mainTitle="'文章'" :subTitle="'Articles'" :tipText="'View More'" :tipHref="'/article'">
             <title-menu-filter @filterByMenu="refreshArticle"  slot="menu" :menu-filter-list="defaultFilterList"></title-menu-filter>
           </section-title>
           <article-list-cell v-for="article in articleList" :article="article" :key="article.title" :type="'article'"></article-list-cell>
-          <section-title :mainTitle="'阅读'" :subTitle="'Books'" :tipText="'View More'" :tipHref="'/books'">
-            <title-menu-filter @filterByMenu="refreshBook"  slot="menu"></title-menu-filter>
+          <section-title :mainTitle="'阅读'" :subTitle="'Books'" :tipText="'View More'" :tipHref="'/book'">
+            <title-menu-filter @filterByMenu="refreshBook"  slot="menu" :menu-filter-list="bookFilterList"></title-menu-filter>
           </section-title>
           <book-list-cell v-for="book in bookList" :book="book" :key="book.title" :type="'book'"></book-list-cell>
-          <section-title :mainTitle="'笔记'" :subTitle="'Notes'" :tipText="'View More'" :tipHref="'/books'">
+          <section-title :mainTitle="'笔记'" :subTitle="'Notes'" :tipText="'View More'" :tipHref="'/book'">
             <title-menu-filter @filterByMenu="refreshBookNote"  slot="menu" :menu-filter-list="bookNoteFilterList"></title-menu-filter>
           </section-title>
           <book-note-list-cell v-for="bookNote in bookNoteList" :bookNote="bookNote" :key="bookNote.title"></book-note-list-cell>
@@ -55,11 +55,13 @@ export default {
       bookNoteList: [],
       bookList: [],
       defaultFilterList: DefaultFilterList,
+      bookFilterList: DefaultFilterList,
       pageParam: {
         page: 1,
         limit: DefaultLimitSize
       },
-      bookNoteFilterList: JSON.parse(JSON.stringify(DefaultFilterList))
+      // bookNoteFilterList: JSON.parse(JSON.stringify(DefaultFilterList))
+      bookNoteFilterList: DefaultFilterList
     }
   },
   components: {
@@ -90,24 +92,24 @@ export default {
     refreshArticle (param) {
       let params = merge(param, this.pageParam)
       this.$http({
-        url: this.$http.adornUrl('/articles'),
+        url: this.$http.adornUrl('/article'),
         params: this.$http.adornParams(params, false),
         method: 'get'
       }).then(({data}) => {
         if (data && data.code === 200) {
-          this.articleList = data.page.list
+          this.articleList = data.data.list
         }
       })
     },
     refreshBook (param) {
       let params = merge(param, this.pageParam)
       this.$http({
-        url: this.$http.adornUrl('/books'),
+        url: this.$http.adornUrl('/book'),
         params: this.$http.adornParams(params, false),
         method: 'get'
       }).then(({data}) => {
         if (data && data.code === 200) {
-          this.bookList = data.page.list
+          this.bookList = data.data.list
           this.bookList.forEach(book => {
             book.coverType = 2
           })
@@ -117,12 +119,12 @@ export default {
     refreshBookNote (param) {
       let params = merge(param, this.pageParam, false)
       this.$http({
-        url: this.$http.adornUrl('/bookNotes'),
+        url: this.$http.adornUrl('/bookNote'),
         params: this.$http.adornParams(params),
         method: 'get'
       }).then(({data}) => {
         if (data && data.code === 200) {
-          this.bookNoteList = data.page.list
+          this.bookNoteList = data.data.list
         }
       })
     }

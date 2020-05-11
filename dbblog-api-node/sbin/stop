@@ -1,0 +1,27 @@
+#! /usr/bin/env bash
+S_NAME=$1
+if [ -z ${env} ];then
+  S_NAME="api"
+fi
+
+env=$2
+if [ -z ${env} ];then
+  env="test"
+else
+  envs=("dev" "product" "test")
+  tmp=0
+  for v in ${envs[@]}
+  do
+    if [ ${v} = ${env} ];then
+      tmp=1
+    fi
+  done
+  if [ ${tmp} -eq 0 ];then
+    env="test"
+  fi
+fi
+
+echo ${env}
+
+ps aux|grep "${env} \[node-app:wechatapplet:${S_NAME}"|grep -v "grep"|awk '{print $2}'|xargs -I {} kill -9 {}
+echo "finished: stop ${S_NAME}"

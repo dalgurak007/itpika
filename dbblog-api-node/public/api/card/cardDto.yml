@@ -1,0 +1,10 @@
+properties:
+  contants:
+    type: object
+    description: 证件内容
+  cardType:
+    type: string
+    description: 证件类型（B：驾驶证，C：学历证书）
+  userToken:
+    type: string
+    description: usertoken

@@ -1,0 +1,94 @@
+swagger: "2.0"
+info:
+  description: "信息接口"
+  version: "1.0.0"
+  title: "信息接口"
+# host: "127.0.0.1:20001"
+# host: "114.116.21.95:20001"
+basePath: "/wx"
+# externalDocs:
+#   description: "Find out more about Swagger"
+#   url: "http://swagger.io"
+
+tags:
+- name: "info"
+  description: "基础信息接口"
+  externalDocs:
+    description: "基础信息接口"
+- name: "other"
+  description: "other"
+  externalDocs:
+    description: "other"
+schemes:
+- "http"
+- "https"
+paths:
+  /base/info/getAreaCode:
+    get:
+      tags:
+      - "ems"
+      summary: 获取城市地区行政代码
+      description: 获取城市地区行政代码
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: childId
+        in: query
+        type: string
+        description: 子地区编号
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+  /base/file/foundedFileDown:
+    post:
+      tags:
+      - "ems"
+      summary: 下载创立附件
+      description: 下载创立附件
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        properties:
+          userToken:
+            type: string
+          fileId:
+            type: string
+        description: 用户token，附件id
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+  /base/info/whzGetOpenCities:
+    get:
+      tags:
+      - "other"
+      summary: 微户政获取城市公安列表
+      description: 微户政获取城市公安列表
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+  /base/info/whzGetChirdCities:
+    get:
+      tags:
+      - "other"
+      summary: 微户政获取城市子项公安列表
+      description: 微户政获取城市子项公安列表
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"

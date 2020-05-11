@@ -1,0 +1,27 @@
+properties:
+  name:
+    type: string
+    description: 收件人
+  phone:
+    type: string
+    description: 联系方式
+  area:
+    type: string
+    description: 所在地区
+  address:
+    type: string
+    description: 详细地址
+  isdefault:
+    type: boolean
+    description: 是否是默认地址
+  province:
+    type: string
+    description: 省名
+  city:
+    type: string
+    description: 市名
+  country:
+    type: string
+    description: 区名
+  userToken:
+    type: string

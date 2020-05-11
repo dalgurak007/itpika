@@ -1,0 +1,22 @@
+properties:
+  _id:
+    type: string
+    description: id
+  type:
+    type: integer
+    description: 消息类型(0:txt,1:img,2:音频,3:视频)
+  title:
+    type: string
+    description: 消息标题
+  content:
+    type: object
+    description: 消息内容(type为0时为string，其它为字符串数组，里面是文件的url)
+  cTime:
+    type: string
+    description: 创建时间
+  level:
+    type: integer
+    description: 消息级别(0：普通，1：警告)
+  flag:
+    type: integer
+    description: 消息是否已读(0：未读，1：已读)

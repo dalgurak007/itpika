@@ -97,12 +97,12 @@ export default {
   methods: {
     getBook (bookId) {
       this.$http({
-        url: this.$http.adornUrl('/book/' + bookId),
+        url: this.$http.adornUrl('/book/detail?id=' + bookId),
         method: 'get',
         params: this.$http.adornParams()
       }).then(({data}) => {
         if (data && data.code === 200) {
-          this.book = data.book
+          this.book = data.data
           document.title = this.book.title + ' | Bobbi的个人博客 | 一个努力成长中的Java后端程序猿'
         }
       })

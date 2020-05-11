@@ -1,0 +1,398 @@
+swagger: "2.0"
+info:
+  description: "第三方接口APi"
+  version: "1.0.0"
+  title: "第三方接口"
+# host: "127.0.0.1:20001"
+# host: "114.116.21.95:20001"
+basePath: "/wx"
+# externalDocs:
+#   description: "Find out more about Swagger"
+#   url: "http://swagger.io"
+tags:
+- name: "thirdparty"
+  description: "第三方接口"
+  externalDocs:
+    description: "第三方接口"
+- name: "exitAndEntry"
+  description: "出入境接口"
+  externalDocs:
+    description: "出入境接口"
+- name: "founded"
+  description: "创立接口"
+  externalDocs:
+    description: "创立接口"
+- name: "scga"
+  description: "四川公安接口"
+  externalDocs:
+    description: 四川公安接口
+schemes:
+- "http"
+- "https"
+paths:
+  /thirdparty/scga:
+    post:
+      tags:
+      - "scga"
+      summary: 四川公安接口
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        properties:
+          alias:
+            type: string
+          param:
+            type: object
+          userToken:
+            type: string
+        description: "请求的数据，param类型可以是任意类型，字符串，数组对象等，不限于对象，userToken：用户token"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          schema: 
+            $ref: ./successDto.yaml
+          description: "success"
+  /thirdparty/scga/direct:
+    post:
+      tags:
+      - "scga"
+      summary: 四川公安接口(no usertoken)
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        properties:
+          alias:
+            type: string
+          param:
+            type: object
+        description: 请求的数据，param类型可以是任意类型，字符串，数组对象等，不限于对象
+      produces:
+      - "application/json"
+      responses:
+        200:
+          schema: 
+            $ref: ./successDto.yaml
+          description: "success"
+  /thirdparty/exitAndEntry:
+    post:
+      tags:
+      - "exitAndEntry"
+      summary: "出入境接口调用"
+      description: 调用接口时，不需要传入header的签名和body里面的requestTime与requestNo参数，只需要传入param字段和
+        thirdpartyName：第三方名称，例如：(出入境：exitAndEntry)，alias：接口别名，param：请求的数据
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        properties:
+          alias:
+            type: string
+          param:
+            type: object
+          hasThirdUserId:
+            type: boolean
+          userToken:
+            type: string
+        description: 请求的数据，param类型可以是任意类型，字符串，数组对象等，不限于对象，userToken：用户token，hasThirdUserId：是否需要出入境第三方用户id
+      produces:
+      - "application/json"
+      responses:
+        200:
+          schema: 
+            $ref: ./successDto.yaml
+          description: "success"
+  /thirdparty/founded:
+    post:
+      tags:
+      - "founded"
+      summary: "创立接口调用"
+      description: 调用接口时，不需要传入header参数，由后端生成
+        thirdpartyName：第三方名称，例如：(创立：founded)，alias：接口别名，hasFoundedUserToken：是否需要创立的usertoken(默认不需要)，param：请求的数据，userToken：访问token，登陆时返回
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        properties:
+          alias:
+            type: string
+          hasFoundedUserToken:
+            type: boolean
+            default: true
+          isFileRequest:
+            type: boolean
+            default: false
+          param:
+            type: object
+            description: 请求的数据
+          userToken:
+            type: string
+      produces:
+      - "application/json"
+      responses:
+        200:
+          schema: 
+            $ref: ./successDto.yaml
+          description: "success"
+  /thirdparty/founded/convenienceServices:
+    post:
+      tags:
+      - "founded"
+      summary: "公安便民服务对外接口(创立提供)"
+      description: 调用接口时，不需要传入applyId和secretKey参数，由后端生成
+        thirdpartyName：第三方名称，例如：(创立：founded)，param：请求的数据，userToken：访问token，登陆时返回
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        properties:
+          userToken:
+            type: string
+          param:
+            type: object
+            description: 请求的数据
+      produces:
+      - "application/json"
+      responses:
+        200:
+          schema: 
+            $ref: ./successDto.yaml
+          description: "success"
+  /thirdparty/exitAndEntry/interfaceList:
+    get:
+      tags:
+      - "exitAndEntry"
+      summary: "出入境接口列表"
+      description: 出入境接口列表
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+  /thirdparty/scga/interfaceList:
+    get:
+      tags:
+      - "scga"
+      summary: 四川公安接口列表
+      description: 四川公安接口列表
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+  /thirdparty/scga/seal:
+    get:
+      tags:
+      - "scga"
+      summary: 四川省印章查询
+      description: 四川省印章查询
+      produces:
+      - "text/html"
+      responses:
+        200:
+          description: "success"
+  /thirdparty/exitAndEntry/register:
+    post:
+      tags:
+      - "exitAndEntry"
+      deprecated: true
+      summary: 出入境自动注册
+      description: 出入境自动注册
+      produces:
+      - "application/json"
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        properties:
+          userToken:
+            type: string
+        description: usertoken：用户token
+      responses:
+        200:
+          description: "success"
+  /thirdparty/founded/register:
+    post:
+      tags:
+      - "founded"
+      summary: 创立自动注册接口
+      deprecated: true
+      description: 创立自动注册接口
+      produces:
+      - "application/json"
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        properties:
+          userToken:
+            type: string
+        description: usertoken：用户token
+      responses:
+        200:
+          description: "success"
+  /thirdparty/founded/login:
+    post:
+      tags:
+      - "founded"
+      summary: 创立自动登陆接口
+      deprecated: true
+      description: 创立自动登陆接口
+      produces:
+      - "application/json"
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        properties:
+          userToken:
+            type: string
+        description: usertoken：用户token
+      responses:
+        200:
+          description: "success"
+  /thirdparty/founded/interfaceList:
+    get:
+      tags:
+      - "founded"
+      summary: "创立接口列表"
+      description: 创立接口列表
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+  /thirdparty/whz:
+    post:
+      tags:
+      - "whz"
+      summary: "微户政接口调用"
+      description: 调用接口时，不需要传入header参数，由后端生成，
+        alias：接口别名，param：请求的数据，userToken：访问token，登陆时返回
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        properties:
+          alias:
+            type: string
+          param:
+            type: object
+            description: 请求的数据(一个对象)
+          userToken:
+            type: string
+      produces:
+      - "application/json"
+      responses:
+        200:
+          schema: 
+            $ref: ./successDto.yaml
+          description: "success"
+  /thirdparty/whz/html:
+    get:
+      tags:
+      - "whz"
+      summary: "微户政接口调用(返回html代码)"
+      description: 调用接口时，不需要传入header参数，由后端生成，
+        alias：接口别名，userToken：访问token，登陆时返回,接口所需要的其它参数原样的跟在uri的后面
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: Alias
+        in: query
+        type: string
+        description: 接口别名
+      - name: userToken
+        in: query
+        type: string
+        description: 用户token
+      produces:
+      - "text/html"
+      responses:
+        200:
+          description: "success"
+  /thirdparty/whz/interfaceList:
+    get:
+      tags:
+      - "whz"
+      summary: "微户政接口列表"
+      description: 微户政接口列表
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+  /thirdparty/interface/save:
+    post:
+      tags:
+      - "thirdparty"
+      deprecated: true
+      summary: "新增第三方接口"
+      description: "新增第三方接口，增加后由后端实现后方可调用"
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - in: body
+        name: body
+        description: 第三方接口信息
+        required: true
+        schema:
+          $ref: ./thirdparty_interface.yaml
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"

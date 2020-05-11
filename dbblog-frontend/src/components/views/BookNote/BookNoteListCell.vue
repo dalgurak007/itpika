@@ -8,8 +8,8 @@
               <span class="special" v-if="bookNote.top>0" title="置顶">置顶</span>
             </h4>
             <p class="book-info">
-              <iv-icon type="ios-book"></iv-icon>&nbsp;&nbsp;{{bookNote.book.title}}&nbsp;
-              <iv-icon type="paintbrush"></iv-icon>&nbsp;&nbsp;{{bookNote.book.author }}
+              <iv-icon type="ios-book"></iv-icon>&nbsp;&nbsp;{{bookNote.title}}&nbsp;
+              <iv-icon type="paintbrush"></iv-icon>&nbsp;&nbsp;{{bookNote.author }}
             </p>
             <p class="book-info">
               <iv-icon type="document-text"></iv-icon>&nbsp;&nbsp;Chapter：{{bookNote.chapter | textLineBreak(70) }}
@@ -34,27 +34,27 @@
         </iv-col>
       </iv-row>
       <a class="toggle-arrow" @click="toggleBookInfo" :class="{show: showBookInfo}">
-        {{ this.showBookInfo ? '隐藏《'+ bookNote.book.title + '》':'查看《' + bookNote.book.title + '》'}} &nbsp;<iv-icon type="chevron-up" :class="{show: showBookInfo}"></iv-icon>
+        {{ this.showBookInfo ? '隐藏《'+ bookNote.title + '》':'查看《' + bookNote.title + '》'}} &nbsp;<iv-icon type="chevron-up" :class="{show: showBookInfo}"></iv-icon>
       </a>
-      <a :href="'/book/'+ bookNote.book.id">
+      <a :href="'/book/'+ bookNote.id">
       <div class="book-infos" :class="{show: showBookInfo}"  >
         <div class="book-infos-wrapper">
           <div class="img">
             <div class="container">
               <div class="bracket"></div>
               <div class="target">
-                <img :src="bookNote.book.cover" alt="">
+                <img :src="bookNote.cover" alt="">
               </div>
             </div>
           </div>
           <div class="book-info">
-            <p class="desc"><span>作者：</span>{{ bookNote.book.author }}</p>
-            <iv-progress :percent="bookNote.book.progress" :stroke-width="6">
+            <p class="desc"><span>作者：</span>{{ bookNote.author }}</p>
+            <iv-progress :percent="bookNote.progress" :stroke-width="6">
               <iv-icon type="checkmark-circled"></iv-icon>
-              <span class="progress">{{bookNote.book.progress}}%</span>
+              <span class="progress">{{bookNote.progress}}%</span>
             </iv-progress>
-            <p class="desc">{{ bookNote.book.description | filterHtml | textLineBreak(140) }}</p>
-            <iv-tag type="border" v-for="tag in bookNote.book.tagList" :key="tag.name" class="border-tag">{{ tag.name }}</iv-tag>
+            <p class="desc">{{ bookNote.description | filterHtml | textLineBreak(140) }}</p>
+            <iv-tag type="border" v-for="tag in bookNote.tagList" :key="tag.name" class="border-tag">{{ tag.name }}</iv-tag>
           </div>
         </div>
       </div>

@@ -1,0 +1,35 @@
+swagger: "2.0"
+info:
+  description: "邮政订单管理系统调用接口"
+  version: "1.0.0"
+  title: "运单接口"
+basePath: "/wx"
+tags:
+- name: "ems"
+  description: "运单接口"
+- name: "mail"
+  description: "邮寄接口"
+schemes:
+- "http"
+- "https"
+paths:
+  /express/ems/mail/stateFeedback:
+    post:
+      tags:
+      - "mail"
+      summary: 上门取件状态反馈接口
+      description: 上门取件状态反馈接口
+      parameters:
+      - name: body
+        in: body
+        schema:
+          $ref: ./feedbackDto.yml
+      produces:
+      - "application/json"
+      responses:
+        200:
+          properties:
+            success:
+              type: string
+              description: T or F
+          description: "success"

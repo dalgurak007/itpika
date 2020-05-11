@@ -65,11 +65,11 @@ export default {
     },
     getArticle (articleId) {
       this.$http({
-        url: this.$http.adornUrl('/article/' + articleId),
+        url: this.$http.adornUrl('/article/detail?id=' + articleId),
         method: 'get'
       }).then(({data}) => {
         if (data && data.code === 200) {
-          this.article = data.article
+          this.article = data.data
           // 更新目录、高亮代码
           this.$nextTick(function () {
             this.addCodeLineNumber()

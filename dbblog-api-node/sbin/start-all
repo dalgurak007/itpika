@@ -1,0 +1,34 @@
+#! /usr/bin/env bash
+env=$1
+if [ -z ${env} ];then
+  env="test"
+else
+  envs=("dev" "product" "test")
+  tmp=0
+  for v in ${envs[@]}
+  do
+    if [ ${v} = ${env} ];then
+      tmp=1
+    fi
+  done
+  if [ ${tmp} -eq 0 ];then
+    env="test"
+  fi
+fi
+
+echo "******The runtime environment is ${env}******"
+
+DIR=$(cd $(dirname $0); cd ..; pwd)
+cd ${DIR}
+START_TIME=`date +%Y%m%d_%H%M%S`
+mkdir -p /var/www/log/nodejs/wechatapplet/${env}
+
+#api_log=/var/www/log/nodejs/wechatapplet/${env}/api
+interfaceListening_log=/var/www/log/nodejs/wechatapplet/${env}/interfaceListening
+
+#rm -rf ${api_log}; mkdir -p ${api_log}
+rm -rf ${interfaceListening_log}; mkdir -p ${interfaceListening_log}
+
+# ${DIR}/app api ${PORT} ${env} [node-app:wechatapplet:api] ${START_TIME} >> ${api_log}/today.log &
+${DIR}/app interfaceListening ${env} [node-app:wechatapplet:interfaceListening] ${START_TIME} >> ${interfaceListening_log}/today.log &
+echo "finished: start node:wechatapplet!"

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="icon" type="image/png" href="./dalgurak.png" sizes="16x16" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <title>接口文档</title>
+  <style >
+    .box {
+      height: 300px;
+      width: 100%;
+      margin: 0px
+    }
+    .interface-b {
+      height: 100px;
+      width: 100px;
+      margin-left: 100px;
+      border: 1px red;
+      background: yellow
+    }
+    .enDoc {
+      line-height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-7">
+          <h1>小程序服务接口文档</h1>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-1">
+            <button class="btn btn-success btn-lg" type="submit" onclick="toSwagger('user')">user</button>
+          </div>
+          <div class="col-md-8">
+            <p class="bg-success" style="font-size:30px">用户相关接口</p>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-1">
+            <button class="btn btn-success btn-lg" type="submit" onclick="toSwagger('thirdparty')">thirdparty</button>
+          </div>
+          <div class="col-md-8">
+            <p class="bg-success" style="font-size:30px">第三方服务接口</p>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-1">
+              <fieldset disabled>
+                <fieldset>
+                  <button class="btn btn-success btn-lg" type="submit" onclick="toSwagger('myAddress')">myAddress</button>
+                </fieldset>
+          </div>
+          <div class="col-md-8">
+            <p class="bg-success" style="font-size:30px">收货地址接口</p>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-1">
+              <fieldset disabled>
+                <fieldset>
+                  <button class="btn btn-success btn-lg" type="submit" onclick="toSwagger('card')">card</button>
+                </fieldset>
+          </div>
+          <div class="col-md-8">
+            <p class="bg-success" style="font-size:30px">证件相关接口</p>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-1">
+            <button class="btn btn-success btn-lg" type="submit" onclick="toSwagger('security')">security</button>
+          </div>
+          <div class="col-md-8">
+            <p class="bg-success" style="font-size:30px">安全模块接口</p>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-1">
+            <button class="btn btn-success btn-lg" type="submit" onclick="toSwagger('upload')">upload</button>
+          </div>
+          <div class="col-md-8">
+            <p class="bg-success" style="font-size:30px">文件上传接口</p>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-1">
+            <fieldset disabled>
+            <fieldset>
+              <button class="btn btn-success btn-lg" type="submit" onclick="toSwagger('express')">express</button>
+            </fieldset>
+          </div>
+          <div class="col-md-8">
+            <p class="bg-success" style="font-size:30px">运单快递接口</p>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-1">
+              <!-- <fieldset disabled> -->
+                <fieldset>
+                  <button class="btn btn-success btn-lg" type="submit" onclick="toSwagger('base')">base</button>
+                <!-- </fieldset> -->
+          </div>
+          <div class="col-md-8">
+            <p class="bg-success" style="font-size:30px">基本信息接口</p>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-1">
+              <fieldset disabled>
+                <fieldset>
+                  <button class="btn btn-success btn-lg" type="submit" onclick="toSwagger('user/homepage')">homepage</button>
+                </fieldset>
+          </div>
+          <div class="col-md-8">
+            <p class="bg-success" style="font-size:30px">个人中心相关接口</p>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-1">
+              <fieldset disabled>
+                <fieldset>
+                  <button class="btn btn-success btn-lg" type="submit" onclick="toSwagger('ems')">ems</button>
+                </fieldset>
+          </div>
+          <div class="col-md-8">
+            <p class="bg-success" style="font-size:30px">邮政订单管理系统调用接口(第三方调用)</p>
+          </div>
+      </div>
+</body>
+<script>
+
+function toSwagger(params) {
+  // window.location.href = `${window.location.protocol}//${window.location.host}/unit/swagger-ui/index.html?${params}`
+  window.location.href = `./index.html?${params}`
+}
+</script>
+</html>

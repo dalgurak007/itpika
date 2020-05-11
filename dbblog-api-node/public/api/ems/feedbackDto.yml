@@ -1,0 +1,25 @@
+properties:
+  method:
+    type: string
+    require: true
+    description: 调用的接口名称
+  txLogisticID:
+    type: string
+    require: true
+    description: 物流订单号
+  status:
+    type: string
+    require: true
+    description: 状态
+  mailNum:
+    type: string
+    require: false
+    description: 物流运单号
+  desc:
+    type: string
+    require: false
+    description: 描述
+  sign:
+    type: string
+    require: true
+    description: 签名

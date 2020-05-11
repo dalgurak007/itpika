@@ -1,0 +1,22 @@
+# 数据库配置信息
+
+mysql:
+  host: '127.0.0.1'
+  user: 'root'
+  password: 'sakjjxasx'
+  database: 'dbblog'
+  poolSize: 5
+
+  redis:
+  single:
+    host: 202.61.88.250
+    port: 8908
+    password: dcjt#123987@dalgurak&
+      
+redisSingle:
+  poolSize: 3
+  mode: Single
+
+redisSingleOption:
+  family: 4
+  db: 0

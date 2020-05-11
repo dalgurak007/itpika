@@ -1,0 +1,252 @@
+swagger: "2.0"
+info:
+  description: "用户接口"
+  version: "1.0.0"
+  title: "用户接口"
+# host: "127.0.0.1:20001"
+# host: "114.116.21.95:20001"
+
+basePath: "/wx"
+# externalDocs:
+#   description: "Find out more about Swagger"
+#   url: "http://swagger.io"
+tags:
+- name: "user"
+  description: "用户接口"
+  externalDocs:
+    description: "用户接口"
+- name: "other"
+  description: "其它信息"
+  externalDocs:
+    description: "其它信息"
+- name: "login"
+  description: "登陆接口"
+  externalDocs:
+    description: "登陆接口"
+schemes:
+- "http"
+- "https"
+paths:
+  /user/other/clan:
+    get:
+      tags:
+      - "other"
+      deprecated: true
+      summary: 名族列表
+      description: 名族列表
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+  /user/register/personal:
+    post:
+      tags:
+      - "user"
+      summary: 注册用户
+      description: 注册用户
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        schema:
+          $ref: ./userDto.yml
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+  /user/register/legal:
+    post:
+      tags:
+      - "user"
+      summary: 注册法人用户
+      description: 注册法人用户
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        schema:
+          $ref: ./userLegalDto.yml
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+  /user/info:
+    post:
+      tags:
+      - "user"
+      summary: 查询用户
+      description: 查询用户
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        properties:
+          userToken:
+            type: string
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+  /user/login:
+    post:
+      tags:
+      - "login"
+      summary: 用户登录
+      description: 用户登录
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        properties:
+          username:
+            type: string
+          password:
+            type: string
+          accountType:
+            type: integer
+          logintype:
+            type: string
+        description: username：账号，password：密码，accountType：账户类型，账号类型（0：个人，1：法人），logintype：登陆类型（ 0 密码 1 短信）
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+  /user/faceLogin:
+    post:
+      tags:
+      - "login"
+      summary: 人脸登陆接口
+      description: 人脸登陆接口
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        properties:
+          validateParam:
+            type: object
+          accountType:
+            type: integer
+          username:
+            type: string
+          IdNumber:
+            type: string
+        description: validateParam：人脸认证参数对象，username：账号，accountType：账户类型，账号类型（0：个人，1：法人），IdNumber：身份证号码
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+  /user/getSmsCode:
+    post:
+      tags:
+      - "sms"
+      deprecated: true
+      summary: 发送验证码
+      description: 发送验证码
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        properties:
+          type:
+            type: string
+            description: 需验证类型 （1、登录；2、注册）
+          phone:
+            type: string
+            description: 电话
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+  /user/feedback/feedback:
+    post:
+      tags:
+      - "feedback"
+      deprecated: true
+      summary: 用户反馈
+      description: 用户反馈
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        properties:
+          userToken:
+            type: string
+          img:
+            type: Array
+          type:
+            type: string
+          category:
+            type: string
+          content:
+            type: string
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+  /user/feedback/getType:
+    post:
+      tags:
+      - "feedback"
+      deprecated: true
+      summary: 获取类型
+      description: 获取类型
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        properties:
+          userToken:
+            type: string
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"

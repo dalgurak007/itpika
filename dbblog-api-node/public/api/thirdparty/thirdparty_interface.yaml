@@ -1,0 +1,16 @@
+properties:
+  organization:
+    type: string
+    description: 第三方接口提供机构(公司名) 例如：创立:founded
+  url:
+    type: string
+    description: 接口路由(包含ip和port) 例如：http:127.0.0.1:20001/hello
+  method:
+    type: string
+    description: 接口请求类型
+  alias:
+    type: string
+    description: 接口别名
+  summary:
+    type: string
+    description: 接口说明

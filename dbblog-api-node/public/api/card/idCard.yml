@@ -1,0 +1,48 @@
+properties:
+  contants:
+    type: object
+    properties:
+      idNumber:
+        type: string
+        description: 身份证号码
+      realName:
+        type: string
+        description: 真实姓名
+      gender:
+        type: string
+        description: 性别，1男，0女
+      clan:
+        type: string
+        description: 名族
+      household_code:
+        type: string
+        description: 户籍所在地区域编码
+      birthday:
+        type: string
+        description: 出生日期 1999-01-01 or 1999/01/01
+      address:
+        type: string
+        description: 户籍地址
+      effective_start:
+        type: string
+        description: 有效期起 1999-01-01 or 1999/01/01
+      effective_end:
+        type: string
+        description: 有效期至 1999-01-01 or 1999/01/01
+      longTime:
+        type: string
+        description: 是否长期有效
+      household_codes:
+        type: array
+        description: 户籍所造地行政代码
+        items:
+          type: string
+      household_address:
+        type: array
+        description: 户籍所造地
+        items:
+          type: string
+    description: 证件内容
+  userId:
+    type: string
+    description: 用户id

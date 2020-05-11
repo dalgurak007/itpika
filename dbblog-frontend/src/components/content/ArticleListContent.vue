@@ -60,17 +60,17 @@ export default {
       }
       params = merge(params, this.menuParams)
       this.$http({
-        url: this.$http.adornUrl('/articles'),
+        url: this.$http.adornUrl('/article'),
         params: this.$http.adornParams(params),
         method: 'get'
       }).then(({data}) => {
         if (data && data.code === 200) {
-          if (data.page.totalPage <= data.page.currPage) {
+          if (data.data.totalPage <= data.data.currPage) {
             this.noMoreData = true
           } else {
             this.noMoreData = false
           }
-          this.articleList = data.page.list
+          this.articleList = data.data.list
         }
       })
     },
@@ -109,17 +109,17 @@ export default {
       }
       params = merge(params, this.menuParams)
       this.$http({
-        url: this.$http.adornUrl('/articles'),
+        url: this.$http.adornUrl('/article'),
         params: this.$http.adornParams(params),
         method: 'get'
       }).then(({data}) => {
         if (data && data.code === 200) {
-          if (data.page.totalPage <= data.page.currPage) {
+          if (data.data.totalPage <= data.data.currPage) {
             this.noMoreData = true
           } else {
             this.noMoreData = false
           }
-          this.articleList = this.articleList.concat(data.page.list)
+          this.articleList = this.articleList.concat(data.data.list)
         }
       }).then(response => {
         this.$refs.browseMore.stopLoading()

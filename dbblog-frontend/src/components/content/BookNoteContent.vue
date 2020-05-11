@@ -64,11 +64,11 @@ export default {
     },
     getBookNote (bookNoteId) {
       this.$http({
-        url: this.$http.adornUrl('/bookNote/' + bookNoteId),
+        url: this.$http.adornUrl('/bookNote/detail?id=' + bookNoteId),
         method: 'get'
       }).then(({data}) => {
         if (data && data.code === 200) {
-          this.bookNote = data.bookNote
+          this.bookNote = data.data
           // 更新目录、高亮代码
           this.$nextTick(function () {
             this.addCodeLineNumber()

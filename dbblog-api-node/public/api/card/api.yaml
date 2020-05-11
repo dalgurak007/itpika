@@ -1,0 +1,110 @@
+swagger: "2.0"
+info:
+  description: "证件接口"
+  version: "1.0.0"
+  title: "证件接口"
+# host: "127.0.0.1:20001"
+# host: "114.116.21.95:20001"
+basePath: "/wx"
+# externalDocs:
+#   description: "Find out more about Swagger"
+#   url: "http://swagger.io"
+tags:
+- name: "card"
+  description: "证件接口"
+  externalDocs:
+    description: "证件接口"
+schemes:
+- "http"
+- "https"
+paths:
+  /card/detail:
+    get:
+      tags:
+      - "card"
+      summary: 获取证件详情
+      description: 获取证件详情
+      parameters:
+      - name: id
+        in: query
+        type: string
+        description: 证件id
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+  /card/save:
+    post:
+      tags:
+      - "card"
+      summary: 添加证件
+      description: 添加证件
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        schema:
+          $ref: ./cardDto.yml
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+  /card/idCard:
+    post:
+      tags:
+      - "card"
+      summary: 添加身份证
+      description: 添加身份证
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        schema:
+          $ref: ./idCard.yml
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+  /card/edit:
+    post:
+      tags:
+      - "card"
+      summary: 修改证件
+      description: 修改证件
+      parameters:
+      - name: securityVerification
+        in: header
+        default: dalgurak 
+        type: string
+        description: 文档调试专用header参数，实际请求不需要此参数
+      - name: body
+        in: body
+        type: object
+        properties:
+          cardId:
+            type: string
+          cardType:
+            type: string
+          contants:
+            type: object
+          userToken:
+            type: string
+        description: cardId：证件id，由save接口返回；cardType：证件类型，cardContent：证件内容；usertoken：用户token
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"

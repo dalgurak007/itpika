@@ -1,0 +1,17 @@
+checkInterval: 180000
+wechatServerInterface: https://www.bookdevelop.com:20019/base/info/serverListen?dalgurak=dalgurak
+wechatServerReStart: "/var/www/server/policewechatapplet/nodeApp.linux/sbin/restart product"
+wechatServerStop: "/var/www/server/policewechatapplet/nodeApp.linux/sbin/stop api product"
+wechatServerStart: "/var/www/server/policewechatapplet/nodeApp.linux/sbin/start product"
+messageKey:
+  appid: 1400070848
+  appKey: 01fb2e2d383e40b85d565fd6ee027bd2
+  interfaceStatusFail:
+    templateId: 275025
+    smsSign: 大成均图
+administratorPhone:
+  - 17761204104
+  - 18398977639
+  - 18109035127
+  - 15281700793
+  - 17716136719
