@@ -9,7 +9,7 @@ mysql:
 
   redis:
   single:
-    host: 202.61.88.250
+    host: 127.0.0.1
     port: 8908
     password: dcjt#123987@dalgurak&
       
