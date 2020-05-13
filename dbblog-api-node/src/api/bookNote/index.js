@@ -8,12 +8,15 @@ exports.handler = async ctx => {
   ctx.query.limit = parseInt(ctx.query.limit) || 0;
   let conn = await cs.mysqlPool.getConnection();
 
+  // 推荐
+  let where = '';
+  if (ctx.query.recommend) where += "WHERE recommend=1 "
   // order 排序
   let order = 'ORDER BY ';
   if (ctx.query.favorite) order += 'likeNum DESC,';
   if (order[order.length-1] !== ',') order += 'createTime DESC,';
   
-  let [data] = await conn.query(`SELECT * FROM book_note ${order.substring(0,order.length-1)} LIMIT ?,?`, 
+  let [data] = await conn.query(`SELECT * FROM book_note ${where} ${order.substring(0,order.length-1)} LIMIT ?,?`, 
   [(ctx.query.page-1) * ctx.query.limit, ctx.query.limit]);
   let [ret] = await conn.query('SELECT COUNT(id) AS total FROM book_note');
   conn.release();

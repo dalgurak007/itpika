@@ -1,6 +1,6 @@
 <template>
   <div class="hotRead">
-    <panel :title="'最热阅读'">
+    <panel :title="'最热'">
       <div slot="content" class="content">
         <div class="top">
           <a :href="'/' + topHotRead.urlType + '/' + topHotRead.linkId">
@@ -61,7 +61,7 @@ export default {
         params: this.$http.adornParams()
       }).then(({data}) => {
         if (data && data.code === 200) {
-          this.hotReadList = data.hotReadList
+          this.hotReadList = data.data
           this.topHotRead = this.hotReadList.shift()
         }
       })

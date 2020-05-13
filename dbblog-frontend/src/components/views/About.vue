@@ -1,11 +1,11 @@
 <template>
   <div class="about">
-    <img class="background" src="../../assets/background.jpg" alt="">
-    <img class="avatar" src="../../assets/avatar.jpg" alt="">
-    <p class="name">Bobbi</p>
+    <img class="background" src="../../assets/bkg1.jpg" alt="">
+    <img class="avatar" src="../../assets/dal-head.jpg" alt="">
+    <p class="name">Dalgurak</p>
     <p class="desc">Write the code, Change the World</p>
     <ul class="social">
-      <li><a href="https://github.com/llldddbbb" target="_blank"><img src="../../assets/icon/GitHub.png" alt=""></a></li>
+      <li><a href="https://github.com/dalgurak007" target="_blank"><img src="../../assets/icon/GitHub.png" alt=""></a></li>
     </ul>
     <div class="line"></div>
     <h4>技能值</h4>
@@ -66,7 +66,7 @@ export default {
       left 0
       right 0
       width 100%
-      height 125px
+      height 150px
       z-index 1
     img.avatar
       position relative

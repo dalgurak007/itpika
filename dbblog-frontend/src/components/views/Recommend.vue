@@ -1,6 +1,6 @@
 <template>
   <div class="recommend">
-    <panel :title="'推荐阅读'">
+    <panel :title="'推荐'">
       <div slot="content" class="content">
         <div class="top" v-if="topRecommend">
           <a :href="'/' + topRecommend.urlType + '/' + topRecommend.linkId">
@@ -61,8 +61,9 @@ export default {
         params: this.$http.adornParams()
       }).then(({data}) => {
         if (data && data.code === 200) {
-          this.recommendList = data.recommendList
+          this.recommendList = data.data
           this.topRecommend = this.recommendList.shift()
+          console.log(this.topRecommend)
         }
       })
     }
