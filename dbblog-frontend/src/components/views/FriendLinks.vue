@@ -39,7 +39,7 @@ export default {
         params: this.$http.adornParams()
       }).then(({data}) => {
         if (data && data.code === 200) {
-          this.linkList = data.linkList
+          this.linkList = data.data
         }
       })
     }

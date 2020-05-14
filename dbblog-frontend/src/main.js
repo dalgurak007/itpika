@@ -1,39 +1,42 @@
 import Vue from 'vue'
 import router from '@/router'
 import store from '@/store'
-import 'iview/dist/styles/iview.css'
 import '@/common/stylus/index.styl'
 import App from './App.vue'
 import httpRequest from '@/utils/httpRequest'
 
-// iView UI 组件引入
-import {
-  Row,
-  Col,
-  Button,
-  Progress,
-  Tag,
-  Icon,
-  Affix,
-  Rate,
-  Modal,
-  Message,
-  Notice
-} from 'iview'
+import ViewUI from 'view-design'
+import 'view-design/dist/styles/iview.css'
+Vue.use(ViewUI)
 
-Vue.component('iv-row', Row)
-Vue.component('iv-col', Col)
-Vue.component('iv-button', Button)
-Vue.component('iv-progress', Progress)
-Vue.component('iv-tag', Tag)
-Vue.component('iv-icon', Icon)
-Vue.component('iv-affix', Affix)
-Vue.component('iv-rate', Rate)
+// iView UI 组件引入
+// import {
+//   Row,
+//   Col,
+//   Button,
+//   Progress,
+//   Tag,
+//   Icon,
+//   Affix,
+//   Rate,
+//   Modal,
+//   Message,
+//   Notice
+// } from 'iview'
+
+// Vue.component('iv-row', Row)
+// Vue.component('iv-col', Col)
+// Vue.component('iv-button', Button)
+// Vue.component('iv-progress', Progress)
+// Vue.component('iv-tag', Tag)
+// Vue.component('iv-icon', Icon)
+// Vue.component('iv-affix', Affix)
+// Vue.component('iv-rate', Rate)
 
 Vue.prototype.$http = httpRequest // Ajax 请求方法
-Vue.prototype.$Modal = Modal
-Vue.prototype.$Message = Message
-Vue.prototype.$Notice = Notice
+// Vue.prototype.$Modal = Modal
+// Vue.prototype.$Message = Message
+// Vue.prototype.$Notice = Notice
 Vue.prototype.$loadScript = (script, url, callback) => {
   script = script || document.createElement('script')
   if (script.readyState) {

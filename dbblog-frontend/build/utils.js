@@ -50,10 +50,9 @@ exports.cssLoaders = function (options) {
         fallback: 'vue-style-loader'
       })
     } else {
-      return ['vue-style-loader'].concat(loaders)
+      return ['vue-style-loader',].concat(loaders)
     }
   }
-
   // https://vue-loader.vuejs.org/en/configurations/extract-css.html
   return {
     css: generateLoaders(),
@@ -62,7 +61,8 @@ exports.cssLoaders = function (options) {
     sass: generateLoaders('sass', { indentedSyntax: true }),
     scss: generateLoaders('sass'),
     stylus: generateLoaders('stylus'),
-    styl: generateLoaders('stylus')
+    styl: generateLoaders('stylus'),
+    vue: generateLoaders('vue')
   }
 }
 
@@ -70,7 +70,7 @@ exports.cssLoaders = function (options) {
 exports.styleLoaders = function (options) {
   const output = []
   const loaders = exports.cssLoaders(options)
-
+  // console.log(loaders)
   for (const extension in loaders) {
     const loader = loaders[extension]
     output.push({
