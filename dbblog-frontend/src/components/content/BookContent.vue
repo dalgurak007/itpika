@@ -1,7 +1,7 @@
 <template>
   <div class="book-overview-content layout-content">
-    <iv-row>
-      <iv-col :xs="24" :sm="24" :md="24" :lg="17">
+    <Row>
+      <Col :xs="24" :sm="24" :md="24" :lg="17">
         <div class="layout-left">
           <div class="book-infos">
             <div class="book-base-info">
@@ -22,9 +22,9 @@
                 <p class="desc"><span>评分：</span>
                   <iv-rate v-model="book.grade" disabled :allowHalf="true"></iv-rate>
                 </p>
-                <iv-tag type="border" v-for="tag in book.tagList" :key="tag.name"
+                <Tag type="border" v-for="tag in book.tagList" :key="tag.name"
                        class="border-tag">{{ tag.name }}
-                </iv-tag>
+                </Tag>
               </div>
               <div class="rating"></div>
             </div>
@@ -55,13 +55,13 @@
           </div>
           <social-section  :post-id="book.id" :type="'Book'" ></social-section>
         </div>
-      </iv-col>
-      <iv-col :xs="0" :sm="0" :md="0" :lg="7">
+      </Col>
+      <Col :xs="0" :sm="0" :md="0" :lg="7">
         <div class="layout-right">
           <recommend></recommend>
         </div>
-      </iv-col>
-    </iv-row>
+      </Col>
+    </Row>
   </div>
 </template>
 

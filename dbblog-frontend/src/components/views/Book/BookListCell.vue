@@ -1,32 +1,36 @@
 <template>
   <div class="book-cell">
     <a>
-      <iv-row type="flex">
-        <iv-col :xs="24" :sm="24" :md="textSpan" :lg="textSpan" :order="textOrderType" style="padding-left: 0;padding-right: 0;">
+      <Row type="flex">
+        <Col :xs="24" :sm="24" :md="textSpan" :lg="textSpan" :order="textOrderType" style="padding-left: 0;padding-right: 0;">
           <div class="text-wrapper">
             <h4 class="title">
               <a :href="'/book/'+book.id">{{book.title}}</a>
               <span class="special" v-if="book.reading>0" title="正在阅读">正在阅读</span>
             </h4>
             <div class="tags">
-              <iv-tag :color="tag.id | mapTagColor" :key="tag.id" type="border" v-for ="(tag) in book.tagList">{{tag.name}}</iv-tag>
+              <Tag :color="tag.id | mapTagColor" :key="tag.id" type="border" v-for ="(tag) in book.tagList">{{tag.name}}</Tag>
             </div>
             <p class="desc">{{book.description | filterHtml | textLineBreak(70) }}<a :href="'/book/'+book.id"> 查看更多
-              <iv-icon type="arrow-right-b"></iv-icon>
+              <Icon type="ios-arrow-dropright-circle" />
             </a></p>
             <p class="operate_info">
               <span class="publish-time">At time / <a >{{book.createTime | socialDate }}</a></span>
-              <span class="readings"><a ><iv-icon type="eye"></iv-icon> {{book.readNum}} 阅读</a></span>
-              <span class="likes"><a @click="likePost(book)"><iv-icon type="heart"></iv-icon> {{book.likeNum}} 喜欢</a></span>
+              <span class="readings"><a >
+                <Icon type="ios-eye" />
+                 {{book.readNum}} 阅读</a></span>
+              <span class="likes"><a @click="likePost(book)">
+                <Icon type="ios-heart" />
+                 {{book.likeNum}} 喜欢</a></span>
             </p>
           </div>
-        </iv-col>
-        <iv-col :xs="0" :sm="0" :md="imgSpan" :lg="imgSpan" :order="imgOrderType" style="padding-left: 0px;padding-right: 0px">
+        </Col>
+        <Col :xs="0" :sm="0" :md="imgSpan" :lg="imgSpan" :order="imgOrderType" style="padding-left: 0px;padding-right: 0px">
           <div class="img-wrapper" :class="themeClass">
             <img :src="book.cover" alt="">
           </div>
-        </iv-col>
-      </iv-row>
+        </Col>
+      </Row>
     </a>
   </div>
 </template>

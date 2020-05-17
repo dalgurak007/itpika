@@ -15,12 +15,12 @@
           <a :href="`/book/${book.id}`"> {{book.title}}</a>
         </p>
         <p class="desc"><span>作者：</span>{{ book.author }}</p>
-        <iv-progress :percent="book.progress" :stroke-width="6">
+        <Progress :percent="book.progress" :stroke-width="6">
           <iv-icon type="checkmark-circled"></iv-icon>
           <span>{{ book.progress }}%</span>
-        </iv-progress>
+        </Progress>
         <p class="desc">{{ book.description | filterHtml | textLineBreak(140) }}</p>
-        <iv-tag type="border" v-for="tag in book.tagList" :key="tag.id">{{ tag.name }}</iv-tag>
+        <Tag type="border" v-for="tag in book.tagList" :key="tag.id">{{ tag.name }}</Tag>
       </div>
     </a>
   </div>

@@ -1,18 +1,18 @@
 <template>
   <div class="article-list-content">
-    <iv-row>
-      <iv-col :xs="24" :sm="24" :md="24" :lg="17">
+    <Row>
+      <Col :xs="24" :sm="24" :md="24" :lg="17">
         <section-title :mainTitle="'搜索结果'" :subTitle="this.$route.query.keywords"> </section-title>
         <article-list-cell v-for="article in articleList" :article="article" :key="article.id"></article-list-cell>
         <div v-if="noResult">暂无相关文章</div>
-      </iv-col>
-      <iv-col :xs="0" :sm="0" :md="0" :lg="7">
+      </Col>
+      <Col :xs="0" :sm="0" :md="0" :lg="7">
         <div class="layout-right">
           <recommend></recommend>
           <tag-wall style="margin-top: 15px;"></tag-wall>
         </div>
-      </iv-col>
-    </iv-row>
+      </Col>
+    </Row>
   </div>
 </template>
 

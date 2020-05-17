@@ -1,92 +1,92 @@
 <template>
   <div class="classify">
     <p class="header-title">摄影分类</p>
-    <iv-row>
-      <iv-col :xs="8" :sm="6" :md="4" :lg="4">
+    <Row>
+      <Col :xs="8" :sm="6" :md="4" :lg="4">
         <a  class="content">
           <img src="../../../assets/class1.jpg" alt="">
           <p class="title">游记</p>
           <p class="desc">天下之美</p>
         </a>
-      </iv-col>
-      <iv-col :xs="8" :sm="6" :md="4" :lg="4">
+      </Col>
+      <Col :xs="8" :sm="6" :md="4" :lg="4">
         <a  class="content">
           <img src="../../../assets/class2.jpg" alt="">
           <p class="title">游记</p>
           <p class="desc">天下之美</p>
         </a>
-      </iv-col>
-      <iv-col :xs="8" :sm="6" :md="4" :lg="4">
+      </Col>
+      <Col :xs="8" :sm="6" :md="4" :lg="4">
         <a  class="content">
           <img src="../../../assets/class3.jpg" alt="">
           <p class="title">游记</p>
           <p class="desc">天下之美</p>
         </a>
-      </iv-col>
-      <iv-col :xs="8" :sm="6" :md="4" :lg="4">
+      </Col>
+      <Col :xs="8" :sm="6" :md="4" :lg="4">
         <a  class="content">
           <img src="../../../assets/class4.jpg" alt="">
           <p class="title">游记</p>
           <p class="desc">天下之美</p>
         </a>
-      </iv-col>
-      <iv-col :xs="8" :sm="6" :md="4" :lg="4">
+      </Col>
+      <Col :xs="8" :sm="6" :md="4" :lg="4">
         <a  class="content">
           <img src="../../../assets/class5.jpg" alt="">
           <p class="title">游记</p>
           <p class="desc">天下之美</p>
         </a>
-      </iv-col>
-      <iv-col :xs="8" :sm="6" :md="4" :lg="4">
+      </Col>
+      <Col :xs="8" :sm="6" :md="4" :lg="4">
         <a  class="content">
           <img src="../../../assets/class6.jpg" alt="">
           <p class="title">游记</p>
           <p class="desc">天下之美</p>
         </a>
-      </iv-col>
-      <iv-col :xs="8" :sm="6" :md="4" :lg="4">
+      </Col>
+      <Col :xs="8" :sm="6" :md="4" :lg="4">
         <a  class="content">
           <img src="../../../assets/class7.jpg" alt="">
           <p class="title">游记</p>
           <p class="desc">天下之美</p>
         </a>
-      </iv-col>
-      <iv-col :xs="8" :sm="6" :md="4" :lg="4">
+      </Col>
+      <Col :xs="8" :sm="6" :md="4" :lg="4">
         <a  class="content">
           <img src="../../../assets/class8.jpg" alt="">
           <p class="title">游记</p>
           <p class="desc">天下之美</p>
         </a>
-      </iv-col>
-      <iv-col :xs="8" :sm="6" :md="4" :lg="4">
+      </Col>
+      <Col :xs="8" :sm="6" :md="4" :lg="4">
         <a  class="content">
           <img src="../../../assets/class9.jpg" alt="">
           <p class="title">游记</p>
           <p class="desc">天下之美</p>
         </a>
-      </iv-col>
-      <iv-col :xs="8" :sm="6" :md="4" :lg="4">
+      </Col>
+      <Col :xs="8" :sm="6" :md="4" :lg="4">
         <a  class="content">
           <img src="../../../assets/class10.jpg" alt="">
           <p class="title">游记</p>
           <p class="desc">天下之美</p>
         </a>
-      </iv-col>
-      <iv-col :xs="8" :sm="6" :md="4" :lg="4">
+      </Col>
+      <Col :xs="8" :sm="6" :md="4" :lg="4">
         <a  class="content">
           <img src="../../../assets/class11.jpg" alt="">
           <p class="title">游记</p>
           <p class="desc">天下之美</p>
         </a>
-      </iv-col>
-      <iv-col :xs="8" :sm="6" :md="4" :lg="4">
+      </Col>
+      <Col :xs="8" :sm="6" :md="4" :lg="4">
         <a  class="content">
           <img src="../../../assets/class12.jpg" alt="">
           <p class="title">游记</p>
           <p class="desc">天下之美</p>
         </a>
-      </iv-col>
-    </iv-row>
+      </Col>
+    </Row>
   </div>
 </template>
 

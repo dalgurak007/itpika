@@ -6,7 +6,7 @@
           <a :href="'/' + topRecommend.urlType + '/' + topRecommend.linkId">
             <p class="title">{{topRecommend.title}}</p>
             <div class="tags">
-              <iv-tag  :color="tag.id | mapTagColor" v-for="(tag) in topRecommend.tagList" :key="tag.id">{{tag.name}}</iv-tag>
+              <Tag  :color="tag.id | mapTagColor" v-for="(tag) in topRecommend.tagList" :key="tag.id">{{tag.name}}</Tag>
             </div>
             <p class="info">
               <span class="time">{{topRecommend.createTime | socialDate }}</span>
@@ -26,9 +26,9 @@
               <p class="title">{{recommend.title}}</p>
               <p class="info">
                 <span class="time">{{recommend.createTime | socialDate }}</span>
-                <span class="likes"><a ><iv-icon type="heart"></iv-icon> {{recommend.likeNum}} </a></span>
-                <span class="comments"><a ><iv-icon type="compose"></iv-icon> {{recommend.commentNum}} </a></span>
-                <span class="readings"><a ><iv-icon type="eye"></iv-icon> {{recommend.readNum}} </a></span>
+                <span class="likes"><a ><Icon type="ios-heart" /> {{recommend.likeNum}} </a></span>
+                <span class="comments"><a ><Icon type="ios-create" /> {{recommend.commentNum}} </a></span>
+                <span class="readings"><a ><Icon type="ios-eye" /> {{recommend.readNum}} </a></span>
               </p>
             </a>
           </li>

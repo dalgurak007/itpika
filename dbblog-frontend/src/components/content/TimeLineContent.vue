@@ -1,7 +1,7 @@
 <template>
   <div class="timeline-content">
-    <iv-row>
-      <iv-col :xs="24" :sm="24" :md="24" :lg="17">
+    <Row>
+      <Col :xs="24" :sm="24" :md="24" :lg="17">
         <div class="layout-left">
           <timeline-header></timeline-header>
           <div v-for="year in timelineList" :key="year.year" v-if="year.months.length > 0">
@@ -13,14 +13,14 @@
             </div>
           </div>
         </div>
-      </iv-col>
-      <iv-col :xs="0" :sm="0" :md="0" :lg="7">
+      </Col>
+      <Col :xs="0" :sm="0" :md="0" :lg="7">
         <div class="layout-right">
           <recommend></recommend>
           <tag-wall style="margin-top: 15px;"></tag-wall>
         </div>
-      </iv-col>
-    </iv-row>
+      </Col>
+    </Row>
   </div>
 </template>
 

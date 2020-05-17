@@ -10,38 +10,38 @@
     <div class="line"></div>
     <h4>技能值</h4>
     <div class="progresses">
-      <iv-row :gutter="20">
-        <iv-col :span="6">
+      <Row :gutter="20">
+        <Col :span="6">
           <p class="title">JavaScript</p>
-        </iv-col>
-        <iv-col :span="18">
-          <iv-progress status="normal" :hide-info="true" :stroke-width="8" :percent="70" class="bar"></iv-progress>
-        </iv-col>
-      </iv-row>
-      <iv-row :gutter="20">
-        <iv-col :span="6">
+        </Col>
+        <Col :span="18">
+          <Progress status="normal" :hide-info="true" :stroke-width="8" :percent="70" class="bar"></Progress>
+        </Col>
+      </Row>
+      <Row :gutter="20">
+        <Col :span="6">
           <p class="title">Go</p>
-        </iv-col>
-        <iv-col :span="18">
-          <iv-progress status="wrong" :hide-info="true" :stroke-width="8" :percent="60" class="bar"></iv-progress>
-        </iv-col>
-      </iv-row>
-      <iv-row :gutter="20">
-        <iv-col :span="6">
+        </Col>
+        <Col :span="18">
+          <Progress status="wrong" :hide-info="true" :stroke-width="8" :percent="60" class="bar"></Progress>
+        </Col>
+      </Row>
+      <Row :gutter="20">
+        <Col :span="6">
           <p class="title">vue</p>
-        </iv-col>
-        <iv-col :span="18">
-          <iv-progress status="success" :hide-info="true" :stroke-width="8" :percent="40" class="bar"></iv-progress>
-        </iv-col>
-      </iv-row>
-      <iv-row :gutter="20">
-        <iv-col :span="6">
+        </Col>
+        <Col :span="18">
+          <Progress status="success" :hide-info="true" :stroke-width="8" :percent="40" class="bar"></Progress>
+        </Col>
+      </Row>
+      <Row :gutter="20">
+        <Col :span="6">
           <p class="title">Linux</p>
-        </iv-col>
-        <iv-col :span="18">
-          <iv-progress status="active" :hide-info="true" :stroke-width="8" :percent="50" class="bar"></iv-progress>
-        </iv-col>
-      </iv-row>
+        </Col>
+        <Col :span="18">
+          <Progress status="active" :hide-info="true" :stroke-width="8" :percent="50" class="bar"></Progress>
+        </Col>
+      </Row>
     </div>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div class="bookNote-content">
-    <iv-row>
-      <iv-col :xs="24" :sm="24" :md="24" :lg="17">
+    <Row>
+      <Col :xs="24" :sm="24" :md="24" :lg="17">
         <div class="layout-left">
           <bookNote-page-header :bookNote="bookNote"></bookNote-page-header>
           <bookNote-page-content>
@@ -10,16 +10,16 @@
           </bookNote-page-content>
           <bookNote-page-footer :post-id = "bookNote.id"></bookNote-page-footer>
         </div>
-      </iv-col>
-      <iv-col :xs="0" :sm="0" :md="0" :lg="7">
+      </Col>
+      <Col :xs="0" :sm="0" :md="0" :lg="7">
         <div class="layout-right">
           <recommend></recommend>
           <iv-affix :offset-top="60" >
             <side-toc style="margin-top: 15px;"  ></side-toc>
           </iv-affix>
         </div>
-      </iv-col>
-    </iv-row>
+      </Col>
+    </Row>
   </div>
 </template>
 <script type="text/ecmascript-6">

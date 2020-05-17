@@ -12,23 +12,24 @@
         <div class="sidebar-menus" >
           <div class="site-nav">
             <p>
-              <iv-icon type="map"></iv-icon>
+              <!-- <iv-icon type="map"></iv-icon> -->
+              <Icon type="ios-map" />
               文章导航
             </p>
           </div>
           <ul class="nav-menu">
             <!-- 类别导航 -->
             <li class="nav-dropdown-container" v-for="category_level1 in articleCategoryList" :key="category_level1.id">
-              <iv-icon type="minus-round"></iv-icon>&nbsp;
+              <!-- <iv-icon type="minus-round"></iv-icon>&nbsp; -->
               <a class="nav-link" :href="'/article/category/'+category_level1.id" >{{category_level1.name}}<span class="arrow"></span>
               </a>
               <ul class="nav-dropdown">
                 <li v-for="category_level2 in category_level1.children" :key="category_level2.id">
-                  <iv-icon type="minus-round"></iv-icon>
+                  <!-- <iv-icon type="minus-round"></iv-icon> -->
                   <a class="nav-link" :href="'/article/category/'+category_level2.id" >{{ category_level2.name}}</a>
                   <ul class="nav-dropdown">
                     <li v-for="category_level3 in category_level2.children"  :key="category_level3.id">
-                      <iv-icon type="minus-round"></iv-icon>&nbsp;
+                      <!-- <iv-icon type="minus-round"></iv-icon>&nbsp; -->
                       <a class="nav-link" :href="'/article/category/'+category_level3.id" >{{ category_level3.name }}</a>
                     </li>
                   </ul>
@@ -40,23 +41,23 @@
         <div class="sidebar-menus">
           <div class="site-nav">
             <p>
-              <iv-icon type="map"></iv-icon>
+              <!-- <iv-icon type="map"></iv-icon> -->
               阅读导航
             </p>
           </div>
           <ul class="nav-menu">
             <!-- 类别导航 -->
             <li class="nav-dropdown-container" v-for="category_level1 in bookCategoryList" :key="category_level1.id">
-              <iv-icon type="minus-round"></iv-icon>&nbsp;
+              <!-- <iv-icon type="minus-round"></iv-icon>&nbsp; -->
               <a class="nav-link" :href="'/book/category/'+category_level1.id" >{{category_level1.name}}<span class="arrow"></span>
               </a>
               <ul class="nav-dropdown">
                 <li v-for="category_level2 in category_level1.children" :key="category_level2.id">
-                  <iv-icon type="minus-round"></iv-icon>
+                  <!-- <iv-icon type="minus-round"></iv-icon> -->
                   <a class="nav-link" :href="'/book/category/'+category_level2.id" >{{ category_level2.name}}</a>
                   <ul class="nav-dropdown">
                     <li v-for="category_level3 in category_level2.children"  :key="category_level3.id">
-                      <iv-icon type="minus-round"></iv-icon>&nbsp;
+                      <!-- <iv-icon type="minus-round"></iv-icon>&nbsp; -->
                       <a class="nav-link" :href="'/book/category/'+category_level3.id" >{{ category_level3.name }}</a>
                     </li>
                   </ul>
@@ -67,7 +68,7 @@
           <div class="sidebar-toc-list" ref="list">
             <div class="site-nav">
               <p>
-                <iv-icon type="ios-flower-outline"></iv-icon>
+                <!-- <iv-icon type="ios-flower-outline"></iv-icon> -->
                 文章目录
               </p>
             </div>

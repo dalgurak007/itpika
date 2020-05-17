@@ -1,7 +1,7 @@
 <template>
   <div class="home-content">
-    <iv-row>
-      <iv-col :xs="24" :sm="24" :md="24" :lg="17" :xl="17">
+    <Row>
+      <Col :xs="24" :sm="24" :md="24" :lg="17" :xl="17">
         <div class="layout-left">
           <section-title :mainTitle="'文章'" :subTitle="'Articles'" :tipText="'View More'" :tipHref="'/articles'">
             <title-menu-filter @filterByMenu="refreshArticle"  slot="menu" :menu-filter-list="defaultFilterList"></title-menu-filter>
@@ -16,8 +16,8 @@
           </section-title>
           <book-note-list-cell v-for="bookNote in bookNoteList" :bookNote="bookNote" :key="bookNote.title"></book-note-list-cell>
         </div>
-      </iv-col>
-      <iv-col :xs="0" :sm="0" :md="0" :lg="7">
+      </Col>
+      <Col :xs="0" :sm="0" :md="0" :lg="7">
         <div class="layout-right">
           <about></about>
           <recommend></recommend>
@@ -25,8 +25,8 @@
           <friend-links style="margin-top:15px;"></friend-links>
           <tag-wall style="margin-top: 15px;"></tag-wall>
         </div>
-      </iv-col>
-    </iv-row>
+      </Col>
+    </Row>
   </div>
 </template>
 

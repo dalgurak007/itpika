@@ -6,13 +6,13 @@
           <a :href="'/' + topHotRead.urlType + '/' + topHotRead.linkId">
             <p class="title">{{topHotRead.title}}</p>
             <div class="tags">
-              <iv-tag  :color="tag.id | mapTagColor" v-for="(tag)  in topHotRead.tagList" :key="tag.id">{{tag.name}}</iv-tag>
+              <Tag  :color="tag.id | mapTagColor" v-for="(tag)  in topHotRead.tagList" :key="tag.id">{{tag.name}}</Tag>
             </div>
             <p class="info">
               <span class="time">{{topHotRead.createTime | socialDate }}</span>
-              <span class="likes"><a ><iv-icon type="heart"></iv-icon> {{topHotRead.likeNum}} </a></span>
-              <span class="comments"><a><iv-icon type="compose"></iv-icon> {{topHotRead.commentNum}} </a></span>
-              <span class="readings"><a><iv-icon type="eye"></iv-icon> {{topHotRead.readNum}} </a></span>
+              <span class="likes"><a ><Icon type="ios-heart" />{{topHotRead.likeNum}} </a></span>
+              <span class="comments"><a><Icon type="ios-heart" /> {{topHotRead.commentNum}} </a></span>
+              <span class="readings"><a><Icon type="ios-eye" /> {{topHotRead.readNum}} </a></span>
             </p>
             <!--<div class="img">-->
               <!--<img :src="topHotRead.cover" alt="">-->
@@ -26,9 +26,9 @@
               <p class="title">{{hotRead.title}}</p>
               <p class="info">
                 <span class="time">{{hotRead.createTime | socialDate }}</span>
-                <span class="likes"><a ><iv-icon type="heart"></iv-icon> {{hotRead.likeNum}} </a></span>
-                <span class="comments"><a ><iv-icon type="compose"></iv-icon> {{hotRead.commentNum}} </a></span>
-                <span class="readings"><a ><iv-icon type="eye"></iv-icon> {{hotRead.readNum}} </a></span>
+                <span class="likes"><a ><Icon type="ios-heart" /> {{hotRead.likeNum}} </a></span>
+                <span class="comments"><a ><Icon type="ios-eye" /> {{hotRead.commentNum}} </a></span>
+                <span class="readings"><a ><Icon type="ios-eye" /> {{hotRead.readNum}} </a></span>
               </p>
             </a>
           </li>

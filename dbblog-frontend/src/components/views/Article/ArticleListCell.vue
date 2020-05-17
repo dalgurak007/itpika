@@ -1,15 +1,15 @@
 <template>
   <div class="article-cell">
     <a>
-      <iv-row type="flex">
-        <iv-col :xs="24" :sm="24" :md="textSpan" :lg="textSpan" :order="textOrderType" style="padding-left: 0;padding-right: 0;">
+      <Row type="flex">
+        <Col :xs="24" :sm="24" :md="textSpan" :lg="textSpan" :order="textOrderType" style="padding-left: 0;padding-right: 0;">
           <div class="text-wrapper">
             <h4 class="title">
               <a :href="'/article/'+article.id">{{article.title}}</a>
               <span class="special" v-if="article.top>0" title="置顶">置顶</span>
             </h4>
             <div class="tags">
-              <iv-tag :color="tag.id | mapTagColor" :key="tag.id" type="border" v-for ="(tag) in article.tagList">{{tag.name}}</iv-tag>
+              <Tag :color="tag.id | mapTagColor" :key="tag.id" type="border" v-for ="(tag) in article.tagList">{{tag.name}}</Tag>
             </div>
             <p class="desc">{{article.description | filterHtml | textLineBreak(70) }}<a :href="'/article/'+article.id"> 查看更多
               <iv-icon type="arrow-right-b"></iv-icon>
@@ -20,13 +20,13 @@
               <span class="likes"><a @click="likePost(article)"><iv-icon type="heart"></iv-icon> {{article.likeNum}} 喜欢</a></span>
             </p>
           </div>
-        </iv-col>
-        <iv-col :xs="0" :sm="0" :md="imgSpan" :lg="imgSpan" :order="imgOrderType" style="padding-left: 0px;padding-right: 0px">
+        </Col>
+        <Col :xs="0" :sm="0" :md="imgSpan" :lg="imgSpan" :order="imgOrderType" style="padding-left: 0px;padding-right: 0px">
           <div class="img-wrapper" :class="themeClass">
             <img :src="article.cover" alt="">
           </div>
-        </iv-col>
-      </iv-row>
+        </Col>
+      </Row>
     </a>
   </div>
 </template>

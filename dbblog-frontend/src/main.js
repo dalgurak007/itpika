@@ -24,11 +24,11 @@ Vue.use(ViewUI)
 //   Notice
 // } from 'iview'
 
-// Vue.component('iv-row', Row)
-// Vue.component('iv-col', Col)
+// Vue.component('Row', Row)
+// Vue.component('Col', Col)
 // Vue.component('iv-button', Button)
-// Vue.component('iv-progress', Progress)
-// Vue.component('iv-tag', Tag)
+// Vue.component('Progress', Progress)
+// Vue.component('Tag', Tag)
 // Vue.component('iv-icon', Icon)
 // Vue.component('iv-affix', Affix)
 // Vue.component('iv-rate', Rate)
