@@ -10,9 +10,9 @@
             </div>
             <p class="info">
               <span class="time">{{topRecommend.createTime | socialDate }}</span>
-              <span class="likes"><a><iv-icon type="heart"></iv-icon> {{topRecommend.likeNum}} </a></span>
-              <span class="comments"><a><iv-icon type="compose"></iv-icon> {{topRecommend.commentNum}} </a></span>
-              <span class="readings"><a><iv-icon type="eye"></iv-icon> {{topRecommend.readNum}} </a></span>
+              <span class="likes"><a><Icon type="ios-heart"/> {{topRecommend.likeNum}} </a></span>
+              <span class="comments"><a><Icon type="ios-create"/> {{topRecommend.commentNum}} </a></span>
+              <span class="readings"><a><Icon type="ios-eye"/> {{topRecommend.readNum}} </a></span>
             </p>
             <!--<div class="img">-->
               <!--<img :src="topRecommend.cover" alt="">-->

@@ -12,12 +12,12 @@
               <Tag :color="tag.id | mapTagColor" :key="tag.id" type="border" v-for ="(tag) in article.tagList">{{tag.name}}</Tag>
             </div>
             <p class="desc">{{article.description | filterHtml | textLineBreak(70) }}<a :href="'/article/'+article.id"> 查看更多
-              <iv-icon type="arrow-right-b"></iv-icon>
+              <Icon type="md-return-right" />
             </a></p>
             <p class="operate_info">
               <span class="publish-time">At time / <a>{{article.createTime | socialDate}}</a></span>
-              <span class="readings"><a ><iv-icon type="eye"></iv-icon> {{article.readNum}} 阅读</a></span>
-              <span class="likes"><a @click="likePost(article)"><iv-icon type="heart"></iv-icon> {{article.likeNum}} 喜欢</a></span>
+              <span class="readings"><a ><Icon type="ios-eye"></Icon> {{article.readNum}} 阅读</a></span>
+              <span class="likes"><a @click="likePost(article)"><Icon type="ios-heart"></Icon> {{article.likeNum}} 喜欢</a></span>
             </p>
           </div>
         </Col>

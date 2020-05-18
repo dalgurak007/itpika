@@ -5,7 +5,7 @@
       <span class="main-title">{{mainTitle}}</span>
       <span class="vertical-line"></span>
       <span class="sub-title">{{subTitle}}</span>
-      <span class="view-more"><a :href="tipHref" v-if="tipText">{{tipText}} <iv-icon type="arrow-right-b"></iv-icon></a></span>
+      <span class="view-more"><a :href="tipHref" v-if="tipText">{{tipText}} <Icon type="ios-arrow-forward" /></a></span>
     </div>
     <div class="menu">
       <slot name="menu"></slot>

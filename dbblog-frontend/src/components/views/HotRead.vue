@@ -27,7 +27,7 @@
               <p class="info">
                 <span class="time">{{hotRead.createTime | socialDate }}</span>
                 <span class="likes"><a ><Icon type="ios-heart" /> {{hotRead.likeNum}} </a></span>
-                <span class="comments"><a ><Icon type="ios-eye" /> {{hotRead.commentNum}} </a></span>
+                <span class="comments"><a ><Icon type="ios-create" /> {{hotRead.commentNum}} </a></span>
                 <span class="readings"><a ><Icon type="ios-eye" /> {{hotRead.readNum}} </a></span>
               </p>
             </a>
