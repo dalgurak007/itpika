@@ -17,7 +17,7 @@
             <div class="tags">
               <Tag :color="tag.id | mapTagColor" :key="tag.id" type="border" v-for ="(tag) in bookNote.tagList">{{tag.name}}</Tag>
             </div>
-            <p class="desc">{{bookNote.description | filterHtml | textLineBreak(70) }}<a :href="'/bookNote/'+bookNote.id"> 查看更多
+            <p class="desc">{{bookNote.description | filterHtml | textLineBreak(80) }}<a :href="'/bookNote/'+bookNote.id"> 查看更多
               <Icon type="ios-redo" />
             </a></p>
             <p class="operate_info">
@@ -140,15 +140,19 @@ export default {
   @import "../../../common/stylus/index.styl";
   .bookNote-cell
     margin-bottom 10px
+    border-radius: 10px
     background-color $default-cell-background-color
-    border 1px solid $default-border-color
+    background-color: #fbfbfb
     img
       width 100%
       transition: All 0.4s ease-in-out
       transform: scale(1.0)
       zoom: 1.0
     &:hover
-      border 1px solid $default-border-hover-color
+      border 0 solid $color-border-hover
+      box-shadow 0 15px 10px -12px rgba(0, 0, 0, 0.5)
+      transform: translate(-2px, -2px)
+      transition: 0.3s
       img
         transform: scale(1.05)
         zoom: 1.02
@@ -234,6 +238,7 @@ export default {
         box-shadow 1px 1px 1px $default-border-color
     .toggle-arrow
       display block
+      border-radius: 10px;
       text-align center
       padding 10px 0
       background-color $default-cell-toggle-background-color

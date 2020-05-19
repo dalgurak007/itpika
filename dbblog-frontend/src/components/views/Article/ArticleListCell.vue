@@ -11,7 +11,7 @@
             <div class="tags">
               <Tag :color="tag.id | mapTagColor" :key="tag.id" type="border" v-for ="(tag) in article.tagList">{{tag.name}}</Tag>
             </div>
-            <p class="desc">{{article.description | filterHtml | textLineBreak(70) }}<a :href="'/article/'+article.id"> 查看更多
+            <p class="desc">{{article.description | filterHtml | textLineBreak(80) }}<a :href="'/article/'+article.id"> 查看更多
               <Icon type="md-return-right" />
             </a></p>
             <p class="operate_info">
@@ -103,11 +103,16 @@ export default {
     margin-bottom 15px
     > a
       display block
+      overflow: hidden
       cursor default
-      border 1px solid $color-border
+      border-radius: 10px
+      border 0 solid $color-border
+      background-color: #fbfbfb
       &:hover
-        border 1px solid $color-border-hover
-        box-shadow 2px 2px 3px $color-border
+        border 0 solid $color-border-hover
+        box-shadow 0 15px 10px -12px rgba(0, 0, 0, 0.5)
+        transform: translate(-2px, -2px)
+        transition: 0.3s
       .text-wrapper
         padding 20px 20px 0 20px
         text-align left
