@@ -3,7 +3,7 @@
 mysql:
   host: '127.0.0.1'
   user: 'root'
-  password: 'golang'
+  password: '123456'
   database: 'dbblog'
   poolSize: 5
 

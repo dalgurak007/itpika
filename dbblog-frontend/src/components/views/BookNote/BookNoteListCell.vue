@@ -150,7 +150,7 @@ export default {
       zoom: 1.0
     &:hover
       border 0 solid $color-border-hover
-      box-shadow 0 15px 10px -12px rgba(0, 0, 0, 0.5)
+      box-shadow 5px 15px 20px -12px rgba(0, 0, 0, 0.5)
       transform: translate(-2px, -2px)
       transition: 0.3s
       img
