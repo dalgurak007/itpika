@@ -19,6 +19,10 @@ import TimeLineContent from '@/components/content/TimeLineContent'
 import SearchResultContent from '@/components/content/SearchResultContent'
 
 Vue.use(Router)
+const VueRouterPush = Router.prototype.push
+Router.prototype.push = function push (to) {
+  return VueRouterPush.call(this, to).catch(err => err)
+}
 
 let router = new Router({
   mode: 'history',
@@ -38,7 +42,7 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: 'Dalgurak的个人博客'
+            title: 'Dalgurak的个人空间'
           }
         },
         {
@@ -59,7 +63,7 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: '博文列表 | Bobbi的个人博客 | 一个努力成长中的Java后端程序猿'
+            title: 'Dalgurak的个人空间'
           }
         },
         {
@@ -71,7 +75,7 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: '博文列表 | Bobbi的个人博客 | 一个努力成长中的Java后端程序猿'
+            title: 'Dalgurak的个人空间'
           }
         },
         {
@@ -83,7 +87,7 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: '博文搜索 | Bobbi的个人博客 | 一个努力成长中的Java后端程序猿'
+            title: 'Dalgurak的个人空间'
           }
         },
         {
@@ -113,7 +117,7 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: '阅读 | Bobbi的个人博客 | 一个努力成长中的Java后端程序猿'
+            title: 'Dalgurak的个人空间'
           }
         },
         {
@@ -125,7 +129,7 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: '阅读 | Bobbi的个人博客 | 一个努力成长中的Java后端程序猿'
+            title: 'Dalgurak的个人空间'
           }
         },
         {
@@ -137,7 +141,7 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: '时间轴 | Bobbi的个人博客 | 一个努力成长中的Java后端程序猿'
+            title: 'Dalgurak的个人空间'
           }
         }
       ]

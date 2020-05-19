@@ -3,11 +3,11 @@
 mysql:
   host: '127.0.0.1'
   user: 'root'
-  password: '123456'
+  password: 'golang'
   database: 'dbblog'
   poolSize: 5
 
-  redis:
+redis:
   single:
     host: 127.0.0.1
     port: 8908

@@ -15,20 +15,9 @@
     </router-link>
     <ul id="nav">
       <li>
-        <form id="search-form" action="/article/search">
-      <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;">
-        <input
-        type="text" id="search-query-nav" class="search-query st-default-search-input aa-input" name="keywords" v-model="keywords" @keyup.enter="submit"
-        autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false"
-        aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
-        <pre
-        aria-hidden="true"
-        style="position: absolute; visibility: hidden; white-space: pre; font-family: system-ui; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
-        <span
-        class="aa-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0"
-        style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div
-        class="aa-dataset-1"></div></span></span>
-        </form>
+         <div class="head-search-box">
+          <Input maxlength="20" @on-search="search" v-model="searchVal" search enter-button placeholder="Search something..." />
+        </div>
       </li>
 
       <li><a href="" class="nav-link contribute">文章</a></li>
@@ -52,6 +41,7 @@ export default {
   },
   data () {
     return {
+      searchVal: '',
       show: true,
       articleCategoryList: [],
       bookCategoryList: [],
@@ -74,6 +64,22 @@ export default {
     window.onmousewheel = document.onmousewheel = this.watchScroll
   },
   methods: {
+    search () {
+      let value = this.searchVal.trim()
+      if (value.length === 0) {
+        return
+      }
+      this.$router.push({path: '/articles/search', query: {keywords: value}})
+      this.$http({
+        url: this.$http.adornUrl('/article/search'),
+        type: 'get',
+        params: this.$http.adornParams({keywords: this.$route.query.keywords})
+      }).then(({data}) => {
+        if (data && data.code === 200) {
+          this.$store.commit('SEARCH_ARTICLE', data.data)
+        }
+      })
+    },
     initMobileMenu () {
       // 显示手机端的菜单
       var sidebar = this.$refs.sidebar
@@ -132,5 +138,10 @@ export default {
     /* .slide-fade-leave-active for below version 2.1.8 */
     transform: translateY(-70px);
     opacity: 0;
+  }
+  .head-search-box {
+    height 100%;
+    display: flex;
+    align-items: center;
   }
 </style>

@@ -63,7 +63,6 @@ export default {
         if (data && data.code === 200) {
           this.recommendList = data.data
           this.topRecommend = this.recommendList.shift()
-          console.log(this.topRecommend)
         }
       })
     }

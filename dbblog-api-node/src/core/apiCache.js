@@ -17,7 +17,8 @@ const apiCache = {
           this.store[router].method = 'GET';
         }
       } else {
-        log.error('Not Found method: %s',router.substr(router.lastIndexOf('/')));
+        // log.error('Not Found method: %s',router.substr(router.lastIndexOf('/')));
+        log.error('Not Found method: %s', router);
         return null;
       }
     }

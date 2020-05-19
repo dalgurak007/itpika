@@ -1,24 +1,28 @@
 /**
- *  Created by dalgurak on Wed Nov 07 2018 9:31:52
+ *  Created by dalgurak on Wed Nov 07 2018 10:48:55
  */
-/*global process:true, global:true */
+const responderModule = require('../modules/responderModule');
+const mysqlModule = require('../modules/mysqlModule');
+// const redisPoolModule = require('../lib/modules/redisPoolModule');
 
-const yaml = require('node-yaml');
-const fs = require('fs');
-const path = require('path');
+let handler = {
+  set: (target, propKey) => {
+    throw new Error(`Can't change Profile information ${propKey}`);
+  }
+}
+const deployLoad = {
+  async initialize(deployConfig) {
+    // const redisConfig = deployConfig.db.redis || false;
+    let services = {
+      // redisPool: redisPoolModule.createPool(Object.assign({},redisConfig.single,deployConfig.db.redisSingleOption), deployConfig.db.redisSingle),
+      mysqlPool: mysqlModule(deployConfig.db.mysql),
+      responder: responderModule,
+      config: deployConfig.api,
+      rsa: deployConfig.rsa,
+    };
+    services.config = new Proxy(services.config, handler);
+    return services;
+  }
+};
 
-const configRoot = process.cwd() + '/deploy';
-let envs = fs.readdirSync(configRoot);
-const env = global.env = envs.includes(process.argv[3]) ? process.argv[3] : 'dev';
-
-
-const deploy = {};
-
-// fs.readdirSync(path.join(configRoot, env)).forEach(f => {
-//   deploy[f.substr(0, f.lastIndexOf('.'))] = yaml.readSync(path.join(configRoot, env, f));
-// });
-['db', 'api', 'rsa'].forEach(f => {
-  deploy[f] = yaml.readSync(path.join(configRoot, env, f+'.yml'));
-});
-
-module.exports = deploy;
+module.exports = deployLoad;

@@ -25,8 +25,8 @@ function startup(opt) {
   app.use(require('./middleware/apiSetting')());
   // app.use(require('./middleware/apiDecrypt')());
   // app.use(require('./middleware/apiParameterFilter')());
-  // app.use(require('./middleware/apiValidations')());
-  // app.use(require('./middleware/apiLogSave')());
+  app.use(require('./middleware/apiValidations')());
+  app.use(require('./middleware/apiLog')());
   app.use(require('./middleware/apiAdapter')());
   app.use(require('./middleware/apiError')());
   
@@ -34,7 +34,7 @@ function startup(opt) {
   const port = parseInt(process.argv[2]) || 9999;
   (async()=>{
     try {
-      app.services  = await require('./core/deployLoad').initialize(require('./core/deployConfig'));
+      app.services  = await require('./core/deployConfig').initialize(require('./core/deployLoad'));
       const server = app.listen(port);
       server.setTimeout(0);
       log.ok('[%d] nodeApi startup on port: %d', process.pid, port);
