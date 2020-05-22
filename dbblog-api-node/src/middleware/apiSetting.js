@@ -17,5 +17,6 @@ module.exports = () => {
     if (ctx.api.uri === '/favicon.ico') return ctx.body = '';
     ctx.api.services.responder.setup(ctx);
     await next();
+    ctx.set('Content-Type', 'application/json;charset=utf-8');
   };
 };

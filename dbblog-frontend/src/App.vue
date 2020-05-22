@@ -12,6 +12,8 @@ export default {
 
 <style>
   @import "assets/css/reset.css";
-  #app
-    background-color: red
+  #app {
+    /* background-color: rgb(250, 250, 250); */
+  }
+    
 </style>

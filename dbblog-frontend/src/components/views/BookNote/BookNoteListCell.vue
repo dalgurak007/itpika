@@ -1,65 +1,66 @@
 <template>
-  <div class="bookNote-cell">
-      <Row type="flex">
-        <Col :xs="24" :sm="24" :md="textSpan" :lg="textSpan" :order="textOrderType" style="padding-left: 0;padding-right: 0;">
-          <div class="text-wrapper">
-            <h4 class="title">
-              <a :href="'/bookNote/'+bookNote.id">{{bookNote.title}}</a>
-              <span class="special" v-if="bookNote.top>0" title="置顶">置顶</span>
-            </h4>
-            <p class="book-info">
-              <Icon type="ios-book"/>&nbsp;&nbsp;{{bookNote.title}}&nbsp;
-              <Icon type="ios-person"/>&nbsp;&nbsp;{{bookNote.author }}
-            </p>
-            <p class="book-info">
-              <Icon type="ios-paper" />&nbsp;&nbsp;Chapter：{{bookNote.chapter | textLineBreak(70) }}
-            </p>
-            <div class="tags">
-              <Tag :color="tag.id | mapTagColor" :key="tag.id" type="border" v-for ="(tag) in bookNote.tagList">{{tag.name}}</Tag>
+  <div :class="{'bookNote-cell': 1, boxBorder: showBookInfo}">
+    <Row type="flex">
+      <Col :xs="24" :sm="24" :md="textSpan" :lg="textSpan" :order="textOrderType" style="padding-left: 0;padding-right: 0;">
+        <div class="text-wrapper">
+          <h4 class="title">
+            <a :href="'/bookNote/'+bookNote.id">{{bookNote.title}}</a>
+            <span class="special" v-if="bookNote.top>0" title="置顶">置顶</span>
+          </h4>
+          <p class="book-info">
+            <Icon type="ios-book"/>&nbsp;&nbsp;{{bookNote.title}}&nbsp;
+            <Icon type="ios-person"/>&nbsp;&nbsp;{{bookNote.author }}
+          </p>
+          <p class="book-info">
+            <Icon type="ios-paper" />&nbsp;&nbsp;Chapter：{{bookNote.chapter | textLineBreak(70) }}
+          </p>
+          <div class="tags">
+            <Tag :color="tag.id | mapTagColor" :key="tag.id" type="border" v-for ="(tag) in bookNote.tagList">{{tag.name}}</Tag>
+          </div>
+          <p class="desc">{{bookNote.description | filterHtml | textLineBreak(80) }}<a :href="'/bookNote/'+bookNote.id"> 查看更多
+            <Icon type="ios-redo" />
+          </a></p>
+          <p class="operate_info">
+            <span class="publish-time">At time / <a>{{bookNote.createTime | socialDate }}</a></span>
+            <span class="readings"><a><Icon type="ios-eye"></Icon> {{bookNote.readNum}} 阅读</a></span>
+            <span class="likes"><a @click="likePost(bookNote)" ><Icon type="ios-heart"></Icon> {{bookNote.likeNum}} 喜欢</a></span>
+          </p>
+        </div>
+      </Col>
+      <Col :xs="0" :sm="0" :md="imgSpan" :lg="imgSpan" :order="imgOrderType" style="padding-left: 0px;padding-right: 0px">
+        <div class="img-wrapper" :class="themeClass">
+          <img :src="bookNote.cover" alt="">
+        </div>
+      </Col>
+    </Row>
+    <a class="toggle-arrow" @click="toggleBookInfo" :class="{show: showBookInfo}">
+      <!-- {{ this.showBookInfo ? '隐藏《'+ bookNote.title + '》':'查看《' + bookNote.title + '》'}} &nbsp; -->
+      {{ this.showBookInfo ? '隐藏':'查看'}} &nbsp;
+      <Icon type="ios-redo-outline" :class="{show: showBookInfo}"/>
+    </a>
+    <a :href="'/book/'+ bookNote.id">
+    <div class="book-infos" :class="{show: showBookInfo}"  >
+      <div class="book-infos-wrapper">
+        <div class="img">
+          <div class="container">
+            <div class="bracket"></div>
+            <div class="target">
+              <img :src="bookNote.cover" alt="">
             </div>
-            <p class="desc">{{bookNote.description | filterHtml | textLineBreak(80) }}<a :href="'/bookNote/'+bookNote.id"> 查看更多
-              <Icon type="ios-redo" />
-            </a></p>
-            <p class="operate_info">
-              <span class="publish-time">At time / <a>{{bookNote.createTime | socialDate }}</a></span>
-              <span class="readings"><a><Icon type="ios-eye"></Icon> {{bookNote.readNum}} 阅读</a></span>
-              <span class="likes"><a @click="likePost(bookNote)" ><Icon type="ios-heart"></Icon> {{bookNote.likeNum}} 喜欢</a></span>
-            </p>
-          </div>
-        </Col>
-        <Col :xs="0" :sm="0" :md="imgSpan" :lg="imgSpan" :order="imgOrderType" style="padding-left: 0px;padding-right: 0px">
-          <div class="img-wrapper" :class="themeClass">
-            <img :src="bookNote.cover" alt="">
-          </div>
-        </Col>
-      </Row>
-      <a class="toggle-arrow" @click="toggleBookInfo" :class="{show: showBookInfo}">
-        {{ this.showBookInfo ? '隐藏《'+ bookNote.title + '》':'查看《' + bookNote.title + '》'}} &nbsp;
-        <Icon type="ios-redo-outline" :class="{show: showBookInfo}"/>
-      </a>
-      <a :href="'/book/'+ bookNote.id">
-      <div class="book-infos" :class="{show: showBookInfo}"  >
-        <div class="book-infos-wrapper">
-          <div class="img">
-            <div class="container">
-              <div class="bracket"></div>
-              <div class="target">
-                <img :src="bookNote.cover" alt="">
-              </div>
-            </div>
-          </div>
-          <div class="book-info">
-            <p class="desc"><span>作者：</span>{{ bookNote.author }}</p>
-            <Progress :percent="bookNote.progress" :stroke-width="6">
-              <Icon type="iso-person"></Icon>
-              <span class="progress">{{bookNote.progress}}%</span>
-            </Progress>
-            <p class="desc">{{ bookNote.description | filterHtml | textLineBreak(140) }}</p>
-            <Tag type="border" v-for="tag in bookNote.tagList" :key="tag.name" class="border-tag">{{ tag.name }}</Tag>
           </div>
         </div>
+        <div class="book-info">
+          <p class="desc"><span>作者：</span>{{ bookNote.author }}</p>
+          <Progress :percent="bookNote.progress" :stroke-width="6">
+            <Icon type="iso-person"></Icon>
+            <span class="progress">{{bookNote.progress}}%</span>
+          </Progress>
+          <p class="desc">{{ bookNote.description | filterHtml | textLineBreak(140) }}</p>
+          <Tag type="border" v-for="tag in bookNote.tagList" :key="tag.name" class="border-tag">{{ tag.name }}</Tag>
+        </div>
       </div>
-      </a>
+    </div>
+    </a>
   </div>
 </template>
 
@@ -142,7 +143,6 @@ export default {
     margin-bottom 10px
     border-radius: 10px
     background-color $default-cell-background-color
-    background-color: #fbfbfb
     img
       width 100%
       transition: All 0.4s ease-in-out
@@ -150,6 +150,7 @@ export default {
       zoom: 1.0
     &:hover
       border 0 solid $color-border-hover
+      background-color: $hover-cell-background-color
       box-shadow 5px 15px 20px -12px rgba(0, 0, 0, 0.5)
       transform: translate(-2px, -2px)
       transition: 0.3s
@@ -241,7 +242,7 @@ export default {
       border-radius: 10px;
       text-align center
       padding 10px 0
-      background-color $default-cell-toggle-background-color
+      // background-color $default-cell-toggle-background-color
       &:hover
         color $default-info-hover-color
       > i
@@ -308,4 +309,6 @@ export default {
             color $default-desc-color
             text-align justify
             margin 10px 0 5px
+  .boxBorder
+    background-color: $hover-cell-background-color
 </style>

@@ -94,8 +94,8 @@ export default {
       cursor default
       border-radius 10px
       border 0 solid $color-border
-      background-color: #fbfbfb
       &:hover
+        background-color: $hover-cell-background-color
         border 0 solid $color-border-hover
         box-shadow 5px 15px 20px -12px rgba(0, 0, 0, 0.5)
         transform: translate(-2px, -2px)

@@ -3,7 +3,8 @@
     <panel :title="'最热'">
       <div slot="content" class="content">
         <div class="top">
-          <a :href="'/' + topHotRead.urlType + '/' + topHotRead.linkId">
+          <a :href="'/' + topHotRead.type
+           + '/' + topHotRead.linkId">
             <p class="title">{{topHotRead.title}}</p>
             <div class="tags">
               <Tag  :color="tag.id | mapTagColor" v-for="(tag)  in topHotRead.tagList" :key="tag.id">{{tag.name}}</Tag>
@@ -14,15 +15,11 @@
               <span class="comments"><a><Icon type="ios-heart" /> {{topHotRead.commentNum}} </a></span>
               <span class="readings"><a><Icon type="ios-eye" /> {{topHotRead.readNum}} </a></span>
             </p>
-            <!--<div class="img">-->
-              <!--<img :src="topHotRead.cover" alt="">-->
-            <!--</div>-->
-            <p class="desc">{{topHotRead.description | textLineBreak(60)}}</p>
           </a>
         </div>
         <ul class="others">
           <li v-for="hotRead in hotReadList" :key="hotRead.id">
-            <a :href="'/' + hotRead.urlType + '/' +hotRead.linkId">
+            <a :href="'/' + hotRead.type + '/' +hotRead.linkId">
               <p class="title">{{hotRead.title}}</p>
               <p class="info">
                 <span class="time">{{hotRead.createTime | socialDate }}</span>

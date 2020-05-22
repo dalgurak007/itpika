@@ -3,7 +3,7 @@
     <panel :title="'推荐'">
       <div slot="content" class="content">
         <div class="top" v-if="topRecommend">
-          <a :href="'/' + topRecommend.urlType + '/' + topRecommend.linkId">
+          <a :href="'/' + topRecommend.type + '/' + topRecommend.linkId">
             <p class="title">{{topRecommend.title}}</p>
             <div class="tags">
               <Tag  :color="tag.id | mapTagColor" v-for="(tag) in topRecommend.tagList" :key="tag.id">{{tag.name}}</Tag>
@@ -22,7 +22,7 @@
         </div>
         <ul class="others">
           <li v-for="recommend in recommendList" :key="recommend.id">
-            <a :href="'/' + recommend.urlType + '/' +recommend.linkId">
+            <a :href="'/' + recommend.type + '/' +recommend.linkId">
               <p class="title">{{recommend.title}}</p>
               <p class="info">
                 <span class="time">{{recommend.createTime | socialDate }}</span>

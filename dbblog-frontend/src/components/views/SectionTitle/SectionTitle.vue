@@ -1,7 +1,7 @@
 <template>
   <div class="section-title">
     <div class="title">
-      <span class="square"></span>
+      <Icon :type="icon" size="25" />
       <span class="main-title">{{mainTitle}}</span>
       <span class="vertical-line"></span>
       <span class="sub-title">{{subTitle}}</span>
@@ -19,7 +19,8 @@ export default {
     mainTitle: '',
     subTitle: '',
     tipText: '',
-    tipHref: ''
+    tipHref: '',
+    icon: ''
   }
 }
 </script>
@@ -39,31 +40,22 @@ export default {
       padding 10px 0
       height 70px
     .title
-      .square
+      display flex
+      justify-content space-between
+      align-items center
+      *
         display inline-block
-        height 30px
-        width 30px
-        background #000000
-        vertical-align middle
       .main-title
-        display inline-block
-        vertical-align middle
         font-size 22px
         padding 0 10px
       .vertical-line
-        display inline-block
         height 20px
         width 1px
         background-color #333
-        vertical-align middle
       .sub-title
-        display inline-block
-        vertical-align middle
         font-size 18px
         padding-left 10px
       .view-more
-        display inline-block
-        vertical-align middle
         font-size 14px
         padding-left 10px
         a
