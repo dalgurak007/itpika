@@ -1,6 +1,6 @@
 <template>
   <div class="article-list-content">
-    <iv-row>
+    <Row>
       <Col :xs="24" :sm="24" :md="24" :lg="17">
         <div class="layout-left">
           <article-list-header v-if="categoryList.length>0" @filterByMenu="filterByMenu"
@@ -18,7 +18,7 @@
           <tag-wall style="margin-top: 15px;"></tag-wall>
         </div>
       </Col>
-    </iv-row>
+    </Row>
   </div>
 </template>
 

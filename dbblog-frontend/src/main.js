@@ -9,29 +9,6 @@ import ViewUI from 'view-design'
 import 'view-design/dist/styles/iview.css'
 Vue.use(ViewUI)
 
-// iView UI 组件引入
-// import {
-//   Row,
-//   Col,
-//   Button,
-//   Progress,
-//   Tag,
-//   Icon,
-//   Affix,
-//   Rate,
-//   Modal,
-//   Message,
-//   Notice
-// } from 'iview'
-
-// Vue.component('Row', Row)
-// Vue.component('Col', Col)
-// Vue.component('iv-button', Button)
-// Vue.component('Progress', Progress)
-// Vue.component('Tag', Tag)
-// Vue.component('iv-icon', Icon)
-// Vue.component('iv-affix', Affix)
-// Vue.component('iv-rate', Rate)
 
 Vue.prototype.$http = httpRequest // Ajax 请求方法
 // Vue.prototype.$Modal = Modal

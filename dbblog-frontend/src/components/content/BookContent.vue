@@ -20,7 +20,7 @@
                 <p class="desc"><span>出版日期：</span>{{ book.publishDate }}</p>
                 <p class="desc"><span>页数：</span>{{ book.pageNum }}</p>
                 <p class="desc"><span>评分：</span>
-                  <iv-rate v-model="book.grade" disabled :allowHalf="true"></iv-rate>
+                  <Rate v-model="book.grade" disabled :allowHalf="true"></Rate>
                 </p>
                 <Tag type="border" v-for="tag in book.tagList" :key="tag.name"
                        class="border-tag">{{ tag.name }}

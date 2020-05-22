@@ -14,9 +14,9 @@
       <Col :xs="0" :sm="0" :md="0" :lg="7">
         <div class="layout-right">
           <recommend></recommend>
-          <iv-affix :offset-top="60" >
+          <Affix :offset-top="60" >
             <side-toc style="margin-top: 15px;"  ></side-toc>
-          </iv-affix>
+          </Affix>
         </div>
       </Col>
     </Row>

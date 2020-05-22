@@ -30,6 +30,7 @@ module.exports = {
     'space-before-function-paren': 'off',
     'no-tabs': 'off',
     'indent': 'off',
+    'no-multiple-empty-lines': 'off',
     'no-trailing-spaces': 'off'
   }
 }

@@ -11,8 +11,8 @@
       </Col>
       <Col :xs="24" :sm="14" :md="14" :lg="14" style="padding-left: 0;padding-right: 0;">
         <p class="operate_info">
-          <span class="readings"><a ><iv-icon type="eye"></iv-icon> {{article.readNum}} 阅读</a></span> |
-          <span class="likes"><a @click="likePost(article)"><iv-icon type="heart"></iv-icon> {{article.likeNum}} 喜欢</a></span>
+          <span class="readings"><a ><Icon type="ios-eye"/> {{article.readNum}} 阅读</a></span> |
+          <span class="likes"><a @click="likePost(article)"><Icon type="ios-heart"/> {{article.likeNum}} 喜欢</a></span>
         </p>
       </Col>
     </Row>

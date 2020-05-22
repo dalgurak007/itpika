@@ -12,7 +12,6 @@
         <div class="sidebar-menus" >
           <div class="site-nav">
             <p>
-              <!-- <iv-icon type="map"></iv-icon> -->
               <Icon type="ios-map" />
               文章导航
             </p>
@@ -20,12 +19,11 @@
           <ul class="nav-menu">
             <!-- 类别导航 -->
             <li class="nav-dropdown-container" v-for="category_level1 in articleCategoryList" :key="category_level1.id">
-              <!-- <iv-icon type="minus-round"></iv-icon>&nbsp; -->
               <a class="nav-link" :href="'/article/category/'+category_level1.id" >{{category_level1.name}}<span class="arrow"></span>
               </a>
               <ul class="nav-dropdown">
                 <li v-for="category_level2 in category_level1.children" :key="category_level2.id">
-                  <!-- <iv-icon type="minus-round"></iv-icon> -->
+                  <!-- < type="minus-round"></iv-icon> -->
                   <a class="nav-link" :href="'/article/category/'+category_level2.id" >{{ category_level2.name}}</a>
                   <ul class="nav-dropdown">
                     <li v-for="category_level3 in category_level2.children"  :key="category_level3.id">
