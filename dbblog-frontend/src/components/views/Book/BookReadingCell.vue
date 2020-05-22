@@ -1,29 +1,43 @@
 <template>
-  <div class="book-reading-cell">
-    <h4>正在阅读</h4>
-    <a >
-      <div class="img">
-        <div class="container">
-          <div class="bracket"></div>
-          <div class="target">
-            <img :src="book.cover" alt="">
+<div class="card-box">
+  <Card>
+    <p slot="title">
+        <Icon type="md-book"></Icon>
+        <span class="card-title">正在阅读</span>
+    </p>
+    <a href="#" slot="extra" @click.prevent="changeLimit">
+        <Icon type="ios-brush" />
+        Change
+    </a>
+    <div class="book-reading-cell">
+      <a >
+        <div class="img">
+          <div class="container">
+            <div class="bracket"></div>
+            <div class="target">
+              <img :src="book.cover" alt="">
+            </div>
           </div>
         </div>
-      </div>
-      <div class="book-info">
-        <p class="title">
-          <a :href="`/book/${book.id}`"> {{book.title}}</a>
-        </p>
-        <p class="desc"><span>作者：</span>{{ book.author }}</p>
-        <Progress :percent="book.progress" :stroke-width="6">
-          <iv-icon type="checkmark-circled"></iv-icon>
-          <span>{{ book.progress }}%</span>
-        </Progress>
-        <p class="desc">{{ book.description | filterHtml | textLineBreak(140) }}</p>
-        <Tag type="border" v-for="tag in book.tagList" :key="tag.id">{{ tag.name }}</Tag>
-      </div>
-    </a>
-  </div>
+        <div class="book-info">
+          <p class="title">
+            <a :href="`/book/${book.id}`"> {{book.title}}</a>
+          </p>
+          <p class="desc">
+            <Icon type="md-person" size='18' />
+            {{ book.author }}
+          </p>
+          <Progress :percent="book.progress" status="active">
+            <Icon type="checkmark-circled"></Icon>
+            <span>{{ book.progress }}%</span>
+          </Progress>
+          <p class="desc">{{ book.description | filterHtml | textLineBreak(140) }}</p>
+          <Tag type="border" v-for="tag in book.tagList" :key="tag.id">{{ tag.name }}</Tag>
+        </div>
+      </a>    
+    </div>
+  </Card>
+</div>
 </template>
 
 <script type="text/ecmascript-6">
@@ -44,37 +58,9 @@ export default {
 
 <style lang="stylus" type="text/stylus" rel="stylesheet/stylus">
   @import "../../../common/stylus/theme.styl";
-
+  .card-box
+    margin 20px 0
   .book-reading-cell
-    border 1px solid $default-border-color
-    padding 20px
-    background-color $default-background-color
-    @media only screen and (max-width: $responsive-sm)
-      padding 10px 10px 15px
-    @media screen and (min-width: $responsive-sm)
-      padding 14px
-    @media screen and (min-width: $responsive-md)
-      padding 16px
-    @media screen and (min-width: $responsive-lg)
-      padding 20px
-    h4
-      color $default-title-color
-      @media only screen and (max-width: $responsive-sm)
-        font-size 22px
-        line-height 24px
-        margin-bottom 10px
-      @media screen and (min-width: $responsive-sm)
-        font-size 23px
-        line-height 30px
-        margin-bottom 15px
-      @media screen and (min-width: $responsive-md)
-        font-size 23px
-        line-height 30px
-        margin-bottom 18px
-      @media screen and (min-width: $responsive-lg)
-        font-size 23px
-        line-height 30px
-        margin-bottom 20px
     > a
       display flex
       .img

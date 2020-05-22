@@ -129,7 +129,7 @@ export default {
         params: this.$http.adornParams(params)
       }).then(({data}) => {
         if (data && data.code === 200) {
-          this.categoryList = treeDataTranslate(data.categoryList)
+          this.categoryList = treeDataTranslate(data.data)
         }
       })
     },

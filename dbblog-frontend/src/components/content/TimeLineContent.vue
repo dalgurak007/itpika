@@ -4,14 +4,12 @@
       <Col :xs="24" :sm="24" :md="24" :lg="17">
         <div class="layout-left">
           <timeline-header></timeline-header>
-          <div v-for="year in timelineList" :key="year.year" v-if="year.months.length > 0">
-            <archive-list-time-title :date="year.year" :count="year.count"></archive-list-time-title>
-            <div v-for="month in year.months" :key="month.month" v-if="month.posts.length > 0">
-              <archive-list-time-title :date="month.month + '月'" :count="month.count" :dateType="'month'"></archive-list-time-title>
-              <archive-list-cell v-for="post in month.posts" :post="post"
-                                 :key="post.title"></archive-list-cell>
-            </div>
-          </div>
+          <Timeline pending>
+            <TimelineItem v-for="(item,key) in timelineList" :key="item.year" :color="key==0?'green':'gray'" >
+                <Icon type="ios-alarm" slot="dot" size='20'/>
+                <span>{{item.year}} 发布{{item.count}}篇</span>
+            </TimelineItem>
+        </Timeline>
         </div>
       </Col>
       <Col :xs="0" :sm="0" :md="0" :lg="7">
@@ -55,7 +53,7 @@ export default {
         params: this.$http.adornParams()
       }).then(({data}) => {
         if (data && data.code === 200) {
-          this.timelineList = data.timelineList
+          this.timelineList = data.data
         }
       })
     }
