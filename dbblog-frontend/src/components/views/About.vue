@@ -12,7 +12,7 @@
     <div class="progresses">
       <Row :gutter="20">
         <Col :span="6">
-          <p class="title">JavaScript</p>
+          <p class="title">JS</p>
         </Col>
         <Col :span="18">
           <Progress status="normal" :hide-info="true" :stroke-width="8" :percent="70" class="bar"></Progress>

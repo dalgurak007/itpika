@@ -32,7 +32,6 @@ exports.cssLoaders = function (options) {
   // generate loader string to be used with extract text plugin
   function generateLoaders (loader, loaderOptions) {
     const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
-
     if (loader) {
       loaders.push({
         loader: loader + '-loader',
@@ -70,7 +69,6 @@ exports.cssLoaders = function (options) {
 exports.styleLoaders = function (options) {
   const output = []
   const loaders = exports.cssLoaders(options)
-
   for (const extension in loaders) {
     const loader = loaders[extension]
     output.push({
@@ -78,6 +76,7 @@ exports.styleLoaders = function (options) {
       use: loader
     })
   }
+  // console.log(JSON.stringify(output))
 
   return output
 }
